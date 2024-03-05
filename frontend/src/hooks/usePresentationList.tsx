@@ -13,6 +13,7 @@ export const usePresentationList = () => {
         const fetchPresentations = async () => {
             try {
                 const presentations = await presentationRepository.getPresentationList(0);
+                setPresentations(presentations);
                 setStatus({ status: 'success' });
             } catch (error: any) {
                 setStatus({ status: 'error', message: error.message });
