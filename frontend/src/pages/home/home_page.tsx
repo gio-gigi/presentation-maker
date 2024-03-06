@@ -1,25 +1,22 @@
+import { PresentationTile } from "../../components/presentation_tile/presentation_tile";
 import { usePresentationList } from "../../hooks/usePresentationList";
+import "./home_page.css";
 
 export const HomePage = () => {
-    const { status, presentations } = usePresentationList();
-    return (
-        <div>
-            {
-                status.status === 'loading' && <div>Loading...</div>
-            }
-            {
-                status.status === 'error' && <div>Error: {status.message}</div>
-            }
-            {
-                status.status === 'success' && presentations.map(presentation => {
-                    return (
-                        <div key={presentation.id}>
-                            <h1>{presentation.title}</h1>
-                            <p>{presentation.description}</p>
-                        </div>
-                    )
-                })
-            }
-        </div>
-    );
-}
+  const { status, presentations } = usePresentationList();
+  if (status.status === "loading") {
+    return <div>Loading...</div>;
+  }
+  if (status.status === "error") {
+    return <div>Error: {status.message}</div>;
+  }
+  return (
+    <div className="home-page">
+      <div className="presentation_list">
+        {presentations.map((presentation) => (
+          <PresentationTile key={presentation.id} presentation={presentation} />
+        ))}
+      </div>
+    </div>
+  );
+};
