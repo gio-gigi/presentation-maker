@@ -3,7 +3,7 @@ import { SlideTextEntity, VisualizableSlideEntity } from '../../infrastructure/e
 import { PresentationMakerPage } from '../../pages/presentation_maker/presentation_maker_page';
 export class Slides {
     private static extractSlides(formattedText: string): string[] {
-        const pattern = /\\slide\{(\s)*([\s\S]*?)(\s)*\}/g;
+        const pattern = /\/slide\{(\s)*([\s\S]*?)(\s)*\}/g;
         const result = formattedText.matchAll(pattern);
         let slides: string[] = [];
         for (const match of result) {
@@ -13,7 +13,7 @@ export class Slides {
     }
 
     private static extractSlideContent(slide: string): SlideTextEntity[] {
-        const pattern = /\\text\[(\d+),([a-zA-Z]+),([a-z]+)\]\{(\s)*([\s\S]*?)(\s)*\}/g;
+        const pattern = /\/text\[(\d+),([a-zA-Z]+),([a-z]+)\]\((\s)*([\s\S]*?)(\s)*\)/g;
         const result = slide.matchAll(pattern);
         let content: SlideTextEntity[] = [];
         for (const match of result) {
