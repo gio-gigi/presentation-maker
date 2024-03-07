@@ -4,8 +4,9 @@ import bcrypt from "bcryptjs";
 import UnauthorizedError from "../errors/UnauthorizedError";
 import jwt from "jsonwebtoken";
 import { ILoginResult } from "../interfaces/ILoginResult";
-
+import dotenv from "dotenv";
 const UserRepository = AppDataSource.getRepository(User);
+dotenv.config();
 
 export class AuthService {
   async loginUser(email: string, pwd: string): Promise<ILoginResult> {
@@ -13,12 +14,12 @@ export class AuthService {
     if (!user) {
       throw new UnauthorizedError({ message: "User does not extist", logging: true, code: 401 });
     }
-    console.log("user" + user.password);
     const passwordMatch = await this.comparePwd(user.password, pwd);
     if (!passwordMatch) {
       throw new UnauthorizedError({ message: "Passwords dont match", logging: true });
     }
-    const token: string = await jwt.sign(email, "secret");
+    const SECRET_JWT: string | undefined = process.env.SECRET_JWT;
+    const token: string = await jwt.sign(email, SECRET_JWT || "mysecret");
     return { isAdmin: user.admin, email, token };
   }
 
