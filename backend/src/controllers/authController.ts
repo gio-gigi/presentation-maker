@@ -1,13 +1,14 @@
 import { NextFunction } from "express";
 import { AuthService } from "../services/authService";
-import { IGetUserAuthInfoRequest } from "../interfaces/IGetUserAuthRequest";
+import { IGetUserFromReq } from "../interfaces/IGetUserFromReq";
 import BadRequestError from "../errors/BadRequestError";
 import { ILoginResult } from "../interfaces/ILoginResult";
 import { Response } from "express";
 import UnauthorizedError from "../errors/UnauthorizedError";
+import { IUser } from "../interfaces/IUser";
 
 const authService = new AuthService();
-const loginUser = async (req: IGetUserAuthInfoRequest, res: Response, next: NextFunction) => {
+const loginUser = async (req: IGetUserFromReq, res: Response, next: NextFunction) => {
   try {
     const email: string | undefined = req.body.email;
     const pwd: string | undefined = req.body.pwd;
@@ -22,4 +23,21 @@ const loginUser = async (req: IGetUserAuthInfoRequest, res: Response, next: Next
   }
 };
 
-export { loginUser };
+const createUser = async (req: IGetUserFromReq, res: Response, next: NextFunction) => {
+  try {
+    const email: string | undefined = req.body.email;
+    const pwd: string | undefined = req.body.pwd;
+    const name: string | undefined = req.body.name;
+    const admin: boolean | undefined = req.body.admin;
+
+    if (!email || !pwd || !name) {
+      return next(new BadRequestError({ logging: true, message: "email, pwd, name are required fields" }));
+    }
+    const user: IUser = await authService.createUser(email, pwd, name, false);
+    return res.status(201).json(user);
+  } catch (error: any) {
+    next(error);
+  }
+};
+
+export { loginUser, createUser };
