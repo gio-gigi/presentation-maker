@@ -1,0 +1,19 @@
+.pe-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 40px;
+    padding: 20px;
+    background-color: rgb(196, 187, 227);
+}
+
+.title {
+    text-align: center;
+}
+
+.text-container {
+    position: relative;
+    width: 90%;
+}
