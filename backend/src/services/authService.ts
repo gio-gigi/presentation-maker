@@ -6,6 +6,8 @@ import jwt from "jsonwebtoken";
 import { ILoginResult } from "../interfaces/ILoginResult";
 import dotenv from "dotenv";
 import { userExists } from "./userService";
+import { createToken } from "../utils/jwtUtils";
+import { comparePwd, hashPwd } from "../utils/passwordUtils";
 const UserRepository = AppDataSource.getRepository(User);
 dotenv.config();
 const SECRET_JWT: string | undefined = process.env.SECRET_JWT;
@@ -16,38 +18,22 @@ export class AuthService {
     if (!user) {
       throw new UnauthorizedError({ message: "User does not extist", logging: true, code: 401 });
     }
-    const passwordMatch = await this.comparePwd(user.password, pwd);
+    const passwordMatch = await comparePwd(user.password, pwd);
     if (!passwordMatch) {
       throw new UnauthorizedError({ message: "Passwords dont match", logging: true });
     }
-    const token: string = await this.getJwt(email);
+    const token: string = await createToken(email, user.admin);
     return { isAdmin: user.admin, email, token };
   }
 
-  async createUser(email: string, pwd: string, name: string, admin: boolean): Promise<User> {
+  async createUser(email: string, pwd: string, name: string, admin: boolean): Promise<String> {
     const user: User = new User();
     user.email = email;
-    user.password = await this.hashPwd(pwd);
     user.name = name;
     user.admin = admin;
+    user.password = await hashPwd(pwd);
     if (await userExists(email)) throw new UnauthorizedError({ message: "User already exists", logging: true });
     await UserRepository.save(user);
-    return user;
-  }
-
-  async getJwt(email: string): Promise<string> {
-    const token: string = await jwt.sign(email, SECRET_JWT || "mysecret ");
-    return token;
-  }
-
-  private async comparePwd(dbPwd: string, userPwd: string): Promise<boolean> {
-    const ans: boolean = await bcrypt.compare(userPwd, dbPwd);
-    return ans;
-  }
-
-  private async hashPwd(pwd: string): Promise<string> {
-    const salt: string = await bcrypt.genSalt(10);
-    const hashedPwd: string = await bcrypt.hash(pwd, salt);
-    return hashedPwd;
+    return await createToken(email, admin);
   }
 }
