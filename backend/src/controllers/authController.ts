@@ -5,7 +5,6 @@ import BadRequestError from "../errors/BadRequestError";
 import { ILoginResult } from "../interfaces/ILoginResult";
 import { Response } from "express";
 import UnauthorizedError from "../errors/UnauthorizedError";
-import { IUser } from "../interfaces/IUser";
 
 const authService = new AuthService();
 const loginUser = async (req: IGetUserFromReq, res: Response, next: NextFunction) => {
@@ -33,8 +32,8 @@ const createUser = async (req: IGetUserFromReq, res: Response, next: NextFunctio
     if (!email || !pwd || !name) {
       return next(new BadRequestError({ logging: true, message: "email, pwd, name are required fields" }));
     }
-    const user: IUser = await authService.createUser(email, pwd, name, false);
-    return res.status(201).json(user);
+    const token: String = await authService.createUser(email, pwd, name, false);
+    return res.status(201).json({ email, admin: false, token });
   } catch (error: any) {
     next(error);
   }
