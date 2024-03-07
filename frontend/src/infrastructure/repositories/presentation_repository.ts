@@ -1,5 +1,5 @@
-import { Presentation } from "../entities/presentation_entity";
+import { PresentationInfoEntity } from "../entities/presentation_entity";
 
 export interface PresentationRepository {
-    getPresentationList(page: number): Promise<Presentation[]>;
+    getPresentationList(page: number): Promise<PresentationInfoEntity[]>;
 }

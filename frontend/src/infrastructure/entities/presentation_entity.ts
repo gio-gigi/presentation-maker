@@ -1,4 +1,4 @@
-export interface Presentation {
+export interface PresentationInfoEntity {
     id: string;
     title: string;
     description?: string;

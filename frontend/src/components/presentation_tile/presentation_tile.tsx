@@ -1,9 +1,9 @@
-import { Presentation } from '../../infrastructure/entities/presentation_entity';
+import { PresentationInfoEntity } from '../../infrastructure/entities/presentation_entity';
 import placeholderImage from '../../assets/image_placeholder.jpg';
 import './presentation_tile.css';
 
 interface PresentationTileProps {
-    presentation: Presentation;
+    presentation: PresentationInfoEntity;
 }
 
 export const PresentationTile = ({presentation}: PresentationTileProps) => {
