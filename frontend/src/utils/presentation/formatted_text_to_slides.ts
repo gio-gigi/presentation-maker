@@ -37,6 +37,10 @@ export class Slides {
         const slidesWithoutFormat = this.extractSlides(formattedText);
         let slides: VisualizableSlideEntity[] = [];
         slidesWithoutFormat.forEach((slide) => {
+            const slideContent = this.extractSlideContent(slide);
+            if (slideContent.length === 0) {
+                return;
+            }
             slides.push({
                 content: this.extractSlideContent(slide)
             });
