@@ -5,12 +5,11 @@ import UnauthorizedError from "../errors/UnauthorizedError";
 import jwt from "jsonwebtoken";
 import { ILoginResult } from "../interfaces/ILoginResult";
 import dotenv from "dotenv";
-import { userExists } from "./userService";
+import { UserService } from "./userService";
 import { createToken } from "../utils/jwtUtils";
 import { comparePwd, hashPwd } from "../utils/passwordUtils";
 const UserRepository = AppDataSource.getRepository(User);
 dotenv.config();
-const SECRET_JWT: string | undefined = process.env.SECRET_JWT;
 
 export class AuthService {
   async loginUser(email: string, pwd: string): Promise<ILoginResult> {
@@ -32,7 +31,7 @@ export class AuthService {
     user.name = name;
     user.role = role;
     user.password = await hashPwd(pwd);
-    if (await userExists(email)) throw new UnauthorizedError({ message: "User already exists", logging: true });
+    if (await UserService.userExists(email)) throw new UnauthorizedError({ message: "User already exists", logging: true });
     await UserRepository.save(user);
     return await createToken(email, role);
   }
