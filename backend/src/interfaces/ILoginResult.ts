@@ -1,5 +1,7 @@
+import { UserRole } from "../models/User";
+
 export interface ILoginResult {
-  isAdmin: boolean;
+  role?: UserRole;
   email?: string;
   token?: string;
 }

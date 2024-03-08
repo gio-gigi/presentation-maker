@@ -1,7 +1,9 @@
+import { UserRole } from "../models/User";
+
 interface IUser {
   email: string;
   name: string;
   password: string;
-  admin: boolean;
+  userRole: UserRole;
 }
 export { IUser };
