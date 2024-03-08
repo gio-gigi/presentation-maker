@@ -1,15 +1,17 @@
-import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import app from "./app";
+import { DataSource } from "typeorm";
+import { AppDataSource } from "./config/data-source";
 
 dotenv.config();
+const port = process.env.PORT || 3001;
 
-const app: Express = express();
-const port = process.env.PORT || 3000;
+AppDataSource.initialize()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`[server]: Server is running at http://localhost:${port}`);
+    });
+  })
+  .catch((error) => console.log(error));
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server update");
-});
-
-app.listen(3001, () => {
-  console.log(`[server]: Server is running at http://localhost:${3001}`);
-});
+export default app;
