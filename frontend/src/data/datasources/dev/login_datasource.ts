@@ -14,12 +14,11 @@ export class LoginDatasourceDev implements LoginDatasource{
             if (response.status === 200) {
                 return response.data.token;
             } else if (response.status === 401) {
-                throw new UnauthorizedError
+                throw new UnauthorizedError()
             } else {
-                throw new BadRequestError
+                throw new BadRequestError()
             }
         } catch (error) {
-            console.error(error);
             throw error;
         }
     }
