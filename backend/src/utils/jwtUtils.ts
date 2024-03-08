@@ -2,10 +2,11 @@ import jwt, { JwtPayload, VerifyOptions } from "jsonwebtoken";
 import dotenv from "dotenv";
 import { ITokenPayload } from "../interfaces/ITokenPayload";
 import UnauthorizedError from "../errors/UnauthorizedError";
+import { UserRole } from "../models/User";
 dotenv.config();
 const SECRET_JWT: string = process.env.SECRET_JWT || "mysecret";
 
-export const createToken = async (email: string, admin: boolean): Promise<string> => {
+export const createToken = async (email: string, admin: UserRole): Promise<string> => {
   return await jwt.sign({ email, admin }, SECRET_JWT);
 };
 
