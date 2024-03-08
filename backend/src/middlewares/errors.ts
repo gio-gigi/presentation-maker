@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { CustomError } from "../errors/CustomError";
 
-export const errorHandler = (err: Error, req: Request, res: Response) => {
+export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
   // Handled errors
   if (err instanceof CustomError) {
     const { statusCode, errors, logging } = err;
@@ -18,11 +18,9 @@ export const errorHandler = (err: Error, req: Request, res: Response) => {
         )
       );
     }
-
-    return res.status(statusCode).send({ errors });
+    return res.status(statusCode).json({ errors });
   }
 
   // Unhandled errors
-  console.error(JSON.stringify(err, null, 2));
-  return res.status(500).send({ errors: [{ message: "Something went wrong" }] });
+  return res.status(500).json({ errors: [{ message: "Something went wrong" }] });
 };
