@@ -1,17 +1,20 @@
 
+import { VisualizableSlideEntity } from '../../infrastructure/entities/presentation_preview_entity';
 import { Slide } from '../slide/slide';
 import './presentation_preview.css';
-export const PresentationPreview = () => {
+interface PresentationPreviewProps {
+    slides: VisualizableSlideEntity[];
+}
+export const PresentationPreview = ({slides}: PresentationPreviewProps) => {
     return (
         <div className="ppw-container">
             <h2 className="title">Preview de la presentación</h2>
             <div className='slides-list'>
-                <Slide/>
-                <Slide/>
-                <Slide/>
-                <Slide/>
-                <Slide/>
-                <Slide/>
+                {
+                    slides.map((slide, index) => {
+                        return <Slide key={index} slide={slide}/>
+                    })
+                }
             </div>
         </div>
     );

@@ -17,3 +17,12 @@
     position: relative;
     width: 90%;
 }
+
+textarea {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    resize: none;
+    padding: 10px;
+    font-size: 1.2em;
+}

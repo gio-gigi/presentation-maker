@@ -1,5 +1,16 @@
 .slide {
     position: relative;
     width: 100%;
-    background-color: red;
+    border: 2px solid black;
+    background-color: rgb(247, 247, 247);
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.slide-content{
+    position: relative;
+    width: 100%;
 }

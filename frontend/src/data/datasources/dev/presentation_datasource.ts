@@ -1,12 +1,12 @@
 import { PresentationDatasource } from "../../../infrastructure/datasources/presentation_datasource";
-import { Presentation } from "../../../infrastructure/entities/presentation_entity";
+import { PresentationInfoEntity } from "../../../infrastructure/entities/presentation_entity";
 
 export class PresentationDatasourceDev implements PresentationDatasource {
-    async getPresentationList(page: number): Promise<Presentation[]> {
+    async getPresentationList(page: number): Promise<PresentationInfoEntity[]> {
         return Promise.resolve(presentationList);
     }
 }
-const presentationList: Presentation[] = [
+const presentationList: PresentationInfoEntity[] = [
     {
         id: '1',
         title: 'Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elit Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua',
