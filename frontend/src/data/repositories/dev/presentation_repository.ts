@@ -1,11 +1,14 @@
 import { PresentationDatasource } from "../../../infrastructure/datasources/presentation_datasource";
-import { PresentationInfoEntity } from "../../../infrastructure/entities/presentation_entity";
+import { PresentationInfoEntity, PresentationToUploadEntity } from "../../../infrastructure/entities/presentation_entity";
 import { PresentationRepository } from "../../../infrastructure/repositories/presentation_repository";
 
-export class PresentationRepositoryDev implements PresentationRepository {
+export class PresentationRepositoryImpl implements PresentationRepository {
     constructor(
         private datasource: PresentationDatasource
     ){}
+    uploadPresentation(presentation: PresentationToUploadEntity): Promise<boolean> {
+        return this.datasource.uploadPresentation(presentation);
+    }
     async getPresentationList(page: number): Promise<PresentationInfoEntity[]> {
         return Promise.resolve(this.datasource.getPresentationList(page));
     }
