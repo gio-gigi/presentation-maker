@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 import { UserService } from "./userService";
 import { createToken } from "../utils/jwtUtils";
 import { comparePwd, hashPwd } from "../utils/passwordUtils";
+import { Repository } from "typeorm";
 const UserRepository = AppDataSource.getRepository(User);
 dotenv.config();
 
@@ -34,5 +35,17 @@ export class AuthService {
     if (await UserService.userExists(email)) throw new UnauthorizedError({ message: "User already exists", logging: true });
     await UserRepository.save(user);
     return await createToken(email, role);
+  }
+
+  async defaultAdmin() {
+    const UserRepository: Repository<User> = AppDataSource.getRepository(User);
+    const email: string = process.env.ADMIN_EMAIL || "admin@gmail.com";
+    const name: string = process.env.ADMIN_NAME || "admin";
+    const role: UserRole = UserRole.ADMIN;
+    const password: string = process.env.ADMIN_PASSWORD || "admin";
+    const admin = await UserRepository.findOneBy({ email });
+    if (admin) await UserRepository.delete({ email });
+    const token: String = await new AuthService().createUser(email, password, name, role);
+    console.log(`\x1b[32m\n[Admin created]\x1b[0m \nemail: ${email} \npassword: ${password} \ntoken: ${token}`);
   }
 }

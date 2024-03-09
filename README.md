@@ -29,6 +29,9 @@ DB_PORT=3306
 DB_USER=yourdbuser
 DB_PWD=yourpassword
 SECRET_JWT=yoursecret
+ADMIN_PWD=admin
+ADMIN_EMAIL=admin@gmail.com
+ADMIN_NAME=admin
 ```
 ### Run backend
 ```
