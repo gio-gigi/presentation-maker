@@ -7,7 +7,7 @@ export interface PresentationInfoEntity {
 }
 
 export interface PresentationToUploadEntity {
-    title: string;
-    image?: Blob;
-    file: Blob;
+    title?: string;
+    image: Blob;
+    file: string;
 }
