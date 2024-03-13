@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, OneToMany } from "typeorm";
+import { Presentation } from "./Presentation";
 
 export enum UserRole {
   ADMIN = "admin",
@@ -9,6 +10,9 @@ export enum UserRole {
 export class User {
   @PrimaryColumn()
   email!: string;
+
+  @OneToMany(() => Presentation, (presentation) => presentation.user)
+  presentations!: Presentation[];
 
   @Column()
   name!: string;
