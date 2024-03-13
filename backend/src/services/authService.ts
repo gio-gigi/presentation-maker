@@ -1,8 +1,6 @@
 import { User, UserRole } from "../models/User";
 import { AppDataSource } from "../config/data-source";
-import bcrypt from "bcryptjs";
 import UnauthorizedError from "../errors/UnauthorizedError";
-import jwt from "jsonwebtoken";
 import { ILoginResult } from "../interfaces/ILoginResult";
 import dotenv from "dotenv";
 import { UserService } from "./userService";
@@ -44,8 +42,13 @@ export class AuthService {
     const role: UserRole = UserRole.ADMIN;
     const password: string = process.env.ADMIN_PASSWORD || "admin";
     const admin = await UserRepository.findOneBy({ email });
-    if (admin) await UserRepository.delete({ email });
-    const token: String = await new AuthService().createUser(email, password, name, role);
+    let token: String = "";
+    if (admin) {
+      admin.password = await hashPwd(password);
+      token = await createToken(email, role);
+    } else {
+      token = await new AuthService().createUser(email, password, name, role);
+    }
     console.log(`\x1b[32m\n[Admin created]\x1b[0m \nemail: ${email} \npassword: ${password} \ntoken: ${token}`);
   }
 }
