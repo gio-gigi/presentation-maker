@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FormValues } from "../infrastructure/entities/login_form_values";
-import { LoginDatasourceDev } from "../data/datasources/dev/login_datasource";
+import { LoginDatasourceDev } from "../data/datasources/login_datasource";
 import { LoginRepositoryDev } from "../data/repositories/login_repository";
 const loginDatasource = new LoginDatasourceDev();
 const loginRepository = new LoginRepositoryDev(loginDatasource)
