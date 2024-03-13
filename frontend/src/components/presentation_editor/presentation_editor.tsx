@@ -1,6 +1,4 @@
-import { useState, Dispatch } from 'react';
 import './presentation_editor.css';
-import { usePresentationMaker } from '../../hooks/usePresentationMaker';
 
 interface PresentationEditorProps {
     onTextChange: (text: string)=>void;
