@@ -4,8 +4,10 @@ import { VisualizableSlideEntity } from "../infrastructure/entities/presentation
 
 export const usePresentationMaker = () => {
     const [slides, setSlides] = useState<VisualizableSlideEntity[]>([]);
+    const [content, setContent] = useState<string>('');
     const onTextChange = (text: string) => {
         setSlides(Slides.formattedTextToSlides(text));
+        setContent(text);
     }
-    return {slides, onTextChange};
+    return {slides, onTextChange, content};
 }

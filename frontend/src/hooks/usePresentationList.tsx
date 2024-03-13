@@ -1,10 +1,7 @@
-import { PresentationRepositoryImpl } from "../data/repositories/dev/presentation_repository"
-import { PresentationDatasourceDev } from '../data/datasources/dev/presentation_datasource';
 import { useEffect, useState } from 'react';
 import { APIRequestStatus } from "../constants/api_request";
 import { PresentationInfoEntity } from "../infrastructure/entities/presentation_entity";
-const presentationDatasource = new PresentationDatasourceDev();
-const presentationRepository = new PresentationRepositoryImpl(presentationDatasource);
+import { presentationRepository } from "../contexts/presentation_info_context";
 
 export const usePresentationList = () => {
     const [status, setStatus] = useState<APIRequestStatus>({ status: 'loading' });

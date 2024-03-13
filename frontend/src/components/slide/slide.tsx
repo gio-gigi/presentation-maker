@@ -5,19 +5,19 @@ import "./slide.css";
 
 interface SlideProps {
   slide: VisualizableSlideEntity;
+  id: string;
 }
 
-export const Slide = ({ slide }: SlideProps) => {
+export const Slide = ({ slide, id }: SlideProps) => {
   const { elementReference } = useAspectRatio({
     basedOn: BasedOn.HORIZONTAL,
     ratio: 2 / 3,
   });
   const { fontSize, parentRef } = useResponsiveFont();
   return (
-    <div ref={elementReference} className="slide">
+    <div ref={elementReference} id={id} className="slide" style={{fontSize, gap: '7em'}}>
       {slide.content.map((text, index) => {
         const curFontSize = text.fontSize/10 * fontSize;
-        console.log(curFontSize, text.fontSize, fontSize);
         return (
           <p
             ref={parentRef}
