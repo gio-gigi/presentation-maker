@@ -6,8 +6,8 @@ import { UserRole } from "../models/User";
 dotenv.config();
 const SECRET_JWT: string = process.env.SECRET_JWT || "mysecret";
 
-export const createToken = async (email: string, admin: UserRole): Promise<string> => {
-  return await jwt.sign({ email, admin }, SECRET_JWT);
+export const createToken = async (email: string, userRole: UserRole): Promise<string> => {
+  return await jwt.sign({ email, userRole }, SECRET_JWT);
 };
 
 export const getTokenData = (token: string): Promise<ITokenPayload | null> => {
