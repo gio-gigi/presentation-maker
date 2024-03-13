@@ -1,5 +1,5 @@
-import { LoginDatasource } from "../../../infrastructure/datasources/login_datasource";
-import { FormValues } from "../../../infrastructure/entities/login_form_values";
+import { LoginDatasource } from "../../infrastructure/datasources/login_datasource";
+import { FormValues } from "../../infrastructure/entities/login_form_values";
 import axios from "axios";
 
 const API_URL = "http://localhost:3001"
