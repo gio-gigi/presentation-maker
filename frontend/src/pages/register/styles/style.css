@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-.login-root{
+.register-root{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +63,8 @@ form .field input:valid{
   border-color: #4158d0;
 }
 
-.wrapper form .field label{position: absolute;
+.wrapper form .field label{
+    position: absolute;
     top: 50%;
     left: 20px;
     color: #999999;
@@ -86,14 +87,14 @@ form .field input[type="email"]:focus ~ label {
     transform: translateY(-50%);
 }
 
-.wrapper form .login-box{
+.wrapper form .register-box{
     height: 50px;
     width: 100%;
     margin-top: 20px;
     position: relative;
 }
 
-form .login-box input{  
+form .register-box input{  
     color: #fff;
     border: none;
     padding-left: 0;
@@ -107,19 +108,33 @@ form .login-box input{
     border-radius: 5px;
 }
 
-form .login-box input:active{
+form .register-box input:active{
     transform: scale(0.95);
 }
 
-form .signup-link a{
+form .signin-link a{
     color: #4158d0;
     text-decoration: none;
 }
 
-form .signup-link a:hover{
+form .signin-link a:hover{
     text-decoration: underline;
 }
 
 .error-message{
     color: red;
+}
+
+.password-box{
+    display: grid;
+}
+.password-box .field{
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.password-box .pass-visibility-button{
+    margin-top: 20px;
+    grid-row: 1;
+    grid-column: 2;
 }
