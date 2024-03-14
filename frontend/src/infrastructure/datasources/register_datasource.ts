@@ -1,5 +1,5 @@
-import { FormValues } from "../entities/login_form_values";
+import { RegisterFormValues } from "../entities/register_form_values";
 
 export interface RegisterDatasource{
-    getToken(form: FormValues): Promise<string>;
+    getToken(form: RegisterFormValues): Promise<string>;
 }
