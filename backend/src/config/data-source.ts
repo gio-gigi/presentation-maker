@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
 import { User } from "../models/User";
 import dotenv from "dotenv";
+import { Presentation } from "../models/Presentation";
 dotenv.config();
 
 export const AppDataSource = new DataSource({
@@ -12,7 +13,7 @@ export const AppDataSource = new DataSource({
   database: "presentation_maker",
   synchronize: true,
   logging: true,
-  entities: [User],
+  entities: [User, Presentation],
   subscribers: [],
   migrations: [],
 });

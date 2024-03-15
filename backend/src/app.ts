@@ -1,21 +1,16 @@
-import express, { Express, NextFunction } from "express";
+import express, { Express } from "express";
 import cors from "cors";
 import { errorHandler } from "./middlewares/errors";
-import { Request, Response } from "express";
 import { authRouter } from "./routes/auth";
-import UnauthorizedError from "./errors/UnauthorizedError";
-import bcrypt from "bcryptjs";
+import { addPayloadToReq } from "./middlewares/authMiddleware";
+import { presentationRouter } from "./routes/presentation";
 
 const app: Express = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(authRouter);
-app.get("/", async (req: Request, res: Response, next: NextFunction) => {
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash("hola", salt);
-  console.log(hashedPassword);
-});
+app.use(addPayloadToReq);
+app.use(authRouter, presentationRouter);
 
 app.use(errorHandler);
 

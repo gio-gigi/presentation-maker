@@ -8,7 +8,7 @@ import UnauthorizedError from "../errors/UnauthorizedError";
 import { UserRole } from "../models/User";
 
 const authService = new AuthService();
-const loginUser = async (req: IGetUserFromReq, res: Response, next: NextFunction) => {
+export const loginUser = async (req: IGetUserFromReq, res: Response, next: NextFunction) => {
   try {
     const email: string | undefined = req.body.email;
     const pwd: string | undefined = req.body.password;
@@ -23,21 +23,19 @@ const loginUser = async (req: IGetUserFromReq, res: Response, next: NextFunction
   }
 };
 
-const createUser = async (req: IGetUserFromReq, res: Response, next: NextFunction) => {
+export const createUser = async (req: IGetUserFromReq, res: Response, next: NextFunction) => {
   try {
     const email: string | undefined = req.body.email;
     const pwd: string | undefined = req.body.password;
     const name: string | undefined = req.body.name;
-    // const admin: boolean | undefined = req.body.admin;
-
+    let role: UserRole | undefined = req.body.role;
+    if (req.body?.payload?.userRole != UserRole.ADMIN) role = UserRole.VIEWER;
     if (!email || !pwd || !name) {
       return next(new BadRequestError({ logging: true, message: "email, pwd, name are required fields" }));
     }
-    const token: String = await authService.createUser(email, pwd, name, UserRole.VIEWER);
-    return res.status(201).json({ email, role: UserRole.VIEWER, token });
+    const token: String = await authService.createUser(email, pwd, name, role || UserRole.VIEWER);
+    return res.status(201).json({ email, role, token });
   } catch (error: any) {
     next(error);
   }
 };
-
-export { loginUser, createUser };
