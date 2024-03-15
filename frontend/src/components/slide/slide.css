@@ -1,7 +1,5 @@
 .slide {
     position: relative;
-    width: 100%;
-    max-width: 100%;
     border: 2px solid black;
     background-color: rgb(247, 247, 247);
     display: flex;
@@ -17,4 +15,11 @@
     word-wrap: break-word;
     word-break: break-word;
     hyphens: auto;
+}
+
+.no-seleccionable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
 }
