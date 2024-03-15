@@ -1,0 +1,27 @@
+import { Router } from "express";
+import { addPayloadToReq, guardRole } from "../middlewares/authMiddleware";
+import { User, UserRole } from "../models/User";
+import { PresentationController } from "../controllers/presentationController";
+import { PresentationService } from "../services/presentationService";
+import { AppDataSource } from "../config/data-source";
+import { Presentation } from "../models/Presentation";
+import { uploadFile } from "../middlewares/uploadFile";
+const presentationRouter: Router = Router();
+const presentationRepository = AppDataSource.getRepository(Presentation);
+const userRepository = AppDataSource.getRepository(User);
+const presentationService = new PresentationService(presentationRepository, userRepository);
+const presentationController = new PresentationController(presentationService);
+
+// create presentation
+presentationRouter.post(
+  "/api/presentation",
+  addPayloadToReq,
+  guardRole(UserRole.ADMIN),
+  uploadFile.single("img"),
+  presentationController.createPresentation
+);
+
+// get presentations
+presentationRouter.get("/api/presentation", addPayloadToReq, guardRole(UserRole.VIEWER), presentationController.getPresentations);
+
+export { presentationRouter };

@@ -13,14 +13,11 @@ export class Presentation {
   title!: string;
 
   @Column()
-  description!: string;
+  txtName!: string;
 
   @Column("date")
   creationDate: Date = new Date();
 
   @Column()
-  urlFile!: string;
-
-  @Column()
-  urlImg!: string;
+  imageName: string = "default.jpg";
 }

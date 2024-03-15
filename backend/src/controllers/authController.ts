@@ -1,14 +1,13 @@
 import { NextFunction } from "express";
 import { AuthService } from "../services/authService";
-import { IGetUserFromReq } from "../interfaces/IGetUserFromReq";
 import BadRequestError from "../errors/BadRequestError";
 import { ILoginResult } from "../interfaces/ILoginResult";
-import { Response } from "express";
+import { Response, Request } from "express";
 import UnauthorizedError from "../errors/UnauthorizedError";
 import { UserRole } from "../models/User";
 
 const authService = new AuthService();
-export const loginUser = async (req: IGetUserFromReq, res: Response, next: NextFunction) => {
+export const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const email: string | undefined = req.body.email;
     const pwd: string | undefined = req.body.password;
@@ -23,7 +22,7 @@ export const loginUser = async (req: IGetUserFromReq, res: Response, next: NextF
   }
 };
 
-export const createUser = async (req: IGetUserFromReq, res: Response, next: NextFunction) => {
+export const createUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const email: string | undefined = req.body.email;
     const pwd: string | undefined = req.body.password;
