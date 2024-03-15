@@ -4,7 +4,6 @@ import { APIRequestStatusEnum } from "../../constants/api_request";
 import { FullPageLoader } from "../../components/full_page_loader/full_page_loader";
 import { Slide } from "../../components/slide/slide";
 import "./presentation_visualization_page.css";
-import { Largest, useLargest } from "../../hooks/useLargest";
 import { BasedOn } from "../../hooks/useAspectRatio";
 import { AspectRatioEnum } from "../../constants/aspect_ratio";
 import { useFullScreen } from "../../hooks/useFullScreen";
