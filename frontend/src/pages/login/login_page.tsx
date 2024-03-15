@@ -2,7 +2,12 @@ import { useLogin } from '../../hooks/useLogin'
 import './styles/style.css'
 
 export const LoginPage = () => {
-    const {register, onSubmit, handleSubmit} = useLogin()
+    const {
+        register, 
+        onSubmit, 
+        handleSubmit,
+        errors,
+    } = useLogin()
 
     return (
         <div className="login-root">
@@ -10,6 +15,7 @@ export const LoginPage = () => {
                 <div className="title">
                     Inicia sesión
                 </div>
+                {errors.email && <div className='error-message'>{errors.email.message}</div>}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="field">
                         <input type="email" {...register('email')} required placeholder=""/>

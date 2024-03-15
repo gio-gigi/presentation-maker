@@ -12,7 +12,7 @@ export const PresentationPreview = ({slides}: PresentationPreviewProps) => {
             <div className='slides-list'>
                 {
                     slides.map((slide, index) => {
-                        return <Slide key={index} slide={slide}/>
+                        return <Slide key={`slide-${index}`} id = {`slide-${index}`} slide={slide}/>
                     })
                 }
             </div>

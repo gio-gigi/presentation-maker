@@ -13,7 +13,7 @@ export class Slides {
     }
 
     private static extractSlideContent(slide: string): SlideTextEntity[] {
-        const pattern = /\/text\[(\d+),([a-zA-Z]+),([a-z]+)\]\((\s)*([\s\S]*?)(\s)*\)/g;
+        const pattern = /\/text\[(\d+),([a-zA-Z | \s]+),([a-z]+)\]\((\s)*([\s\S]*?)(\s)*\)/g;
         const result = slide.matchAll(pattern);
         let content: SlideTextEntity[] = [];
         for (const match of result) {
