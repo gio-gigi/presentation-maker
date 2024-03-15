@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { HomePage } from './pages/home/home_page';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router/router';
 
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <RouterProvider router={router}/>
     </div>
   );
 }

@@ -34,7 +34,7 @@ export const PresentationEditor = ({
           <FontAwesomeIcon icon={faInfo} size="1x" />
         </button>
       </div>
-      <textarea className="text-container" onChange={handleChange}></textarea>
+      <textarea className="text-container-pe" onChange={handleChange}></textarea>
       {isHelpVisible && <PresentationMakerHelp closeHelp={closeHelp} />}
     </div>
   );

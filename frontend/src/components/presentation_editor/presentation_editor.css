@@ -20,14 +20,13 @@
     text-align: center;
 }
 
-.text-container {
+.text-container-pe {
     position: relative;
-    width: 90%;
+    width: 100%;
 }
 
 textarea {
     position: relative;
-    width: 100%;
     flex: 1;
     resize: none;
     padding: 10px;

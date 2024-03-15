@@ -1,4 +1,4 @@
-import { BasedOn, useAspectRatio } from "../../hooks/useAspectRatio";
+import { AspectRatio, BasedOn, useAspectRatio } from "../../hooks/useAspectRatio";
 import { useResponsiveFont } from "../../hooks/useResponsiveFont";
 import { VisualizableSlideEntity } from "../../infrastructure/entities/presentation_preview_entity";
 import "./slide.css";
@@ -6,13 +6,11 @@ import "./slide.css";
 interface SlideProps {
   slide: VisualizableSlideEntity;
   id: string;
+  aspectRatio: AspectRatio;
 }
 
-export const Slide = ({ slide, id }: SlideProps) => {
-  const { elementReference } = useAspectRatio({
-    basedOn: BasedOn.HORIZONTAL,
-    ratio: 2 / 3,
-  });
+export const Slide = ({ slide, id, aspectRatio }: SlideProps) => {
+  const { elementReference } = useAspectRatio(aspectRatio);
   const { fontSize, parentRef } = useResponsiveFont();
   return (
     <div ref={elementReference} id={id} className="slide" style={{fontSize, gap: '7em'}}>
@@ -22,7 +20,7 @@ export const Slide = ({ slide, id }: SlideProps) => {
           <p
             ref={parentRef}
             key={"p" + index}
-            className="slide-content"
+            className="slide-content no-seleccionable"
             style={{
               fontFamily: text.fontFamily,
               fontWeight: text.fontWeigth,

@@ -11,7 +11,7 @@ export const PresentationTile = ({presentation}: PresentationTileProps) => {
         <div key={presentation.id} className='tile'>
             <div className="sub-tile">
                 <div className="image-container">
-                <img className ='placeholder_img' src={presentation.imageUrl ?? placeholderImage}/>
+                    <img className ='placeholder_img' src={presentation.imageUrl ?? placeholderImage}/>
                 </div>
                 <div className="text-container">
                     <h3 className='presentation-title'>{presentation.title}</h3>
