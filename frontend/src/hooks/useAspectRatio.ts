@@ -2,21 +2,21 @@ import { useEffect, useRef } from "react"
 import { JsxElement } from "typescript";
 
 export enum BasedOn {
-    HORIZONTAL,
-    VERTICAL
+    WIDTH,
+    HEIGTH
 }
 
-interface useAspectRatioProps {
+export interface AspectRatio {
     basedOn: BasedOn;
     ratio: number;
 }
 
-export const useAspectRatio = ({basedOn, ratio}: useAspectRatioProps) => {
+export const useAspectRatio = ({basedOn, ratio}: AspectRatio) => {
     const elementReference = useRef<HTMLDivElement | null>(null);
     useEffect(() => {
         const resize = () => {
             if (elementReference.current) {
-                if (basedOn === BasedOn.HORIZONTAL) {
+                if (basedOn === BasedOn.WIDTH) {
                     elementReference.current.style.minHeight = `${elementReference.current.offsetWidth * ratio}px`;
                     elementReference.current.style.maxHeight = `${elementReference.current.offsetWidth * ratio}px`;
                 } else {
@@ -31,5 +31,16 @@ export const useAspectRatio = ({basedOn, ratio}: useAspectRatioProps) => {
             window.removeEventListener('resize', resize);
         }
     }, []);
+    useEffect(() => {
+        if (elementReference.current){
+            if (basedOn === BasedOn.WIDTH) {
+                elementReference.current.style.width = '100%';
+                elementReference.current.style.maxWidth = '100%';
+            } else {
+                elementReference.current.style.height = '100%';
+                elementReference.current.style.maxHeight = '100%';
+            }
+        }
+    }, [elementReference.current]);
     return {elementReference};
 }

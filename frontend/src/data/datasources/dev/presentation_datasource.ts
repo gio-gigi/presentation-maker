@@ -2,10 +2,20 @@ import { set } from "react-hook-form";
 import { PresentationDatasource } from "../../../infrastructure/datasources/presentation_datasource";
 import { PresentationInfoEntity, PresentationToUploadEntity } from "../../../infrastructure/entities/presentation_entity";
 import { formatted_text_to_file } from "../../../utils/presentation/formatted_text_to_file";
+import { PresentationContentEntity } from "../../../infrastructure/entities/presentation_content";
 
 const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
 export class PresentationDatasourceDev implements PresentationDatasource {
+    async getPresentation(id: string): Promise<PresentationContentEntity> {
+        //text to blob
+        const type = 'text/plain';
+        const blob = new Blob([presentationContent], { type });
+        return Promise.resolve({
+            content: blob,
+            contentType: type
+        });
+    }
     async uploadPresentation(presentation: PresentationToUploadEntity): Promise<boolean> {
         //blob to .txt file to auto-download
         const file = formatted_text_to_file(presentation.file);
@@ -120,3 +130,55 @@ const presentationList: PresentationInfoEntity[] = [
         createdAt: new Date('2021-01-01T00:00:00Z')
     },
 ];
+
+const presentationContent = `
+/slide{
+    /text[60,Arial,bold](
+        La Guerra Fría
+    )
+    /text[40,Arial,normal](
+        Un conflicto político e ideológico que dominó las relaciones internacionales después de la Segunda Guerra Mundial.
+    )
+    }
+    
+    /slide{
+    /text[60,Arial,bold](
+        Antecedentes
+    )
+    /text[40,Arial,normal](
+        - Fin de la Segunda Guerra Mundial.
+        - Ruptura ideológica entre el bloque capitalista liderado por EE. UU. y el bloque comunista liderado por la URSS.
+        - División de Alemania y Berlín.
+    )
+    }
+    
+    /slide{
+    /text[60,Arial,bold](
+        Cortina de Hierro
+    )
+    /text[40,Arial,normal](
+        - Término que simboliza la división ideológica y política en Europa.
+        - Discurso de Winston Churchill en 1946.
+    )
+    }
+    
+    /slide{
+    /text[60,Arial,bold](
+        Carrera Armamentista
+    )
+    /text[40,Arial,normal](
+        - Competencia intensa entre EE. UU. y la URSS en la producción de armas nucleares.
+        - Concepto de Mutually Assured Destruction (MAD).
+    )
+    }
+    
+    /slide{
+    /text[60,Arial,bold](
+        Guerra de Corea (1950-1953)
+    )
+    /text[40,Arial,normal](
+        - Conflicto entre Corea del Norte (comunista) y Corea del Sur (capitalista).
+        - Intervención de EE. UU. y la URSS.
+    )
+    }    
+`;

@@ -5,10 +5,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
 }
 
 .sub-tile {
+  position: relative;
   width: 92%;
   aspect-ratio: 1 / 1;
   transition: all 0.5s ease;
@@ -57,7 +57,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   font-size: 18px;
 }
 
