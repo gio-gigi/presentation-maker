@@ -23,7 +23,7 @@ export const addPayloadToReq = async (req: CustomRequestPayload, res: Response, 
 
 export const guardRole = (role: UserRole) => {
   return (req: CustomRequestPayload, res: Response, next: NextFunction) => {
-    if (req.payload?.userRole === role || req.body?.payload?.userRole === UserRole.ADMIN) {
+    if (req.payload?.userRole === role || req.payload?.userRole === UserRole.ADMIN) {
       next();
     } else {
       throw new UnauthorizedError({ message: `Your are not a ${role} user` });
