@@ -23,3 +23,10 @@
     -ms-user-select: none;
     user-select: none; 
 }
+
+.slide-number {
+    position: absolute;
+    bottom: 1%;
+    right: 2%;
+    font-weight: bold;
+}

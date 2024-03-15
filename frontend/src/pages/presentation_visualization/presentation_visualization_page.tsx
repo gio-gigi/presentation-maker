@@ -12,7 +12,7 @@ import { useArrowsControl } from "../../hooks/useArrowsControl";
 
 export const PresentationVisualizationPage = () => {
   const { id } = useParams();
-  const { status, nextSlide, currentSlide, prevSlide } =
+  const { status, nextSlide, currentSlide, prevSlide, currentSlideIndex } =
     usePresentationVisualization({
       id,
     });
@@ -51,6 +51,7 @@ export const PresentationVisualizationPage = () => {
         <Slide
           slide={currentSlide}
           id="current-slide"
+          slideNumber={currentSlideIndex + 1}
           aspectRatio={{
             basedOn:
               BasedOn.HEIGTH,
