@@ -16,6 +16,7 @@ export const PresentationPreview = ({ slides }: PresentationPreviewProps) => {
             <Slide
               key={`slide-${index}`}
               id={`slide-${index}`}
+              slideNumber={index + 1}
               slide={slide}
               aspectRatio={{
                 basedOn: BasedOn.WIDTH,
