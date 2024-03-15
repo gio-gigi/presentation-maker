@@ -7,9 +7,10 @@ interface SlideProps {
   slide: VisualizableSlideEntity;
   id: string;
   aspectRatio: AspectRatio;
+  slideNumber: number;
 }
 
-export const Slide = ({ slide, id, aspectRatio }: SlideProps) => {
+export const Slide = ({ slide, id, aspectRatio, slideNumber }: SlideProps) => {
   const { elementReference } = useAspectRatio(aspectRatio);
   const { fontSize, parentRef } = useResponsiveFont();
   return (
@@ -36,6 +37,7 @@ export const Slide = ({ slide, id, aspectRatio }: SlideProps) => {
           </p>
         );
       })}
+      <p className="slide-number" style={{fontSize: fontSize * 2}}>{slideNumber}</p>
     </div>
   );
 };
