@@ -1,4 +1,6 @@
+import { UserRole } from "../models/User";
+
 export interface ITokenPayload {
   email: string;
-  admin: boolean;
+  role: UserRole;
 }
