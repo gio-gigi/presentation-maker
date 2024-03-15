@@ -60,5 +60,5 @@ export const usePresentationVisualization = ({ id }: UsePresentationVisualizatio
         }
     }, [currentSlideIndex, slides]);
 
-    return { status, nextSlide, currentSlide, prevSlide };
+    return { status, nextSlide, currentSlide, prevSlide, currentSlideIndex };
 }
