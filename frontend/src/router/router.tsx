@@ -5,11 +5,16 @@ import { LoginPage } from "../pages/login/login_page";
 import { ProtectedRoute } from './protected_route';
 import { ADMIN_ROLES, VIEWER_ROLES } from "../constants/roles";
 import { PresentationVisualizationPage } from "../pages/presentation_visualization/presentation_visualization_page";
+import { RegisterPage } from "../pages/register/register_page";
 
 export const router = createBrowserRouter([
     {
         path: "/login",
         element: <LoginPage/>,
+    },
+    {
+        path: "/register",
+        element: <RegisterPage/>,
     },
     {
         element: <ProtectedRoute allowedRoles={ VIEWER_ROLES }/>,
