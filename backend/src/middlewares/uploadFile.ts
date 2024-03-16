@@ -3,10 +3,10 @@ import { Request } from "express";
 import BadRequestError from "../errors/BadRequestError";
 import path from "path";
 import { uniqueFileName } from "../utils/uniqueFileName";
-const pathToStatic = "static/presentations/img";
+import { PATH_TO_STATICS_IMG } from "../constants/paths";
 const storage = multer.diskStorage({
   destination: (req: Request, file: Express.Multer.File, done) => {
-    done(null, pathToStatic);
+    done(null, PATH_TO_STATICS_IMG);
   },
   filename: (req: Request, file, done) => {
     const extention = path.extname(file.originalname);
@@ -16,7 +16,8 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req: Request, file: Express.Multer.File, done: any) => {
   const original = file.originalname;
-  if (original.endsWith("jpg") || original.endsWith("png") || original.endsWith("jpeg")) {
+  const availableExtensions = ["jpg", "png", "jpeg"];
+  if (availableExtensions.some((ext) => original.endsWith(ext))) {
     return done(null, true);
   }
   done(new BadRequestError({ message: "Solo se permiten imagenes" }), false);

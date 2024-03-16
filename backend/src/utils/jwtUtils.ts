@@ -1,10 +1,8 @@
-import jwt, { JwtPayload, VerifyOptions } from "jsonwebtoken";
-import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 import { ITokenPayload } from "../interfaces/ITokenPayload";
 import UnauthorizedError from "../errors/UnauthorizedError";
 import { UserRole } from "../models/User";
-dotenv.config();
-const SECRET_JWT: string = process.env.SECRET_JWT || "mysecret";
+import { SECRET_JWT } from "../constants/jwt";
 
 export const createToken = async (email: string, userRole: UserRole): Promise<string> => {
   return await jwt.sign({ email, userRole }, SECRET_JWT);

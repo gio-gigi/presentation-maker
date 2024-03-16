@@ -26,12 +26,16 @@ Create a .env file inside ./backend with the next variables (you can leave the v
 ```
 PORT=3001
 DB_PORT=3306
-DB_USER=yourdbuser
-DB_PWD=yourpassword
-SECRET_JWT=yoursecret
+DB_USER=root
+DB_PWD=yourdbpassword
+DB_LOGGIN=true
+DB_NAME=presentation_maker
+DB_HOST=localhost
+SECRET_JWT=mysecret
 ADMIN_PWD=admin
 ADMIN_EMAIL=admin@gmail.com
 ADMIN_NAME=admin
+
 ```
 ### Run backend
 ```
