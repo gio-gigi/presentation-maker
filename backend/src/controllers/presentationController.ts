@@ -5,6 +5,7 @@ import BadRequestError from "../errors/BadRequestError";
 import { createTxtWIthContent } from "../utils/txtFiles";
 import { uniqueFileName } from "../utils/uniqueFileName";
 import { CustomRequestPayload } from "../interfaces/IPayloadInReq";
+import UnauthorizedError from "../errors/UnauthorizedError";
 
 const pathToStatic = "static/presentations/txt/";
 
@@ -22,7 +23,8 @@ export class PresentationController {
     try {
       const txtName = uniqueFileName(".txt");
       const imageName = req.file?.filename;
-      const email = req.payload.email;
+      const email = req.payload?.email;
+      if (!email) return next(new UnauthorizedError());
       createTxtWIthContent(content, `${pathToStatic}${txtName}`);
 
       await this.presentationService.createPresentation(email, title, txtName, imageName || "default.jpg");
