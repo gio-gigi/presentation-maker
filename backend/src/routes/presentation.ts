@@ -1,4 +1,6 @@
 import { Router } from "express";
+import path from "path";
+import express from "express";
 import { addPayloadToReq, guardRole } from "../middlewares/authMiddleware";
 import { User, UserRole } from "../models/User";
 import { PresentationController } from "../controllers/presentationController";
@@ -23,5 +25,8 @@ presentationRouter.post(
 
 // get presentations
 presentationRouter.get("/api/presentation", addPayloadToReq, guardRole(UserRole.VIEWER), presentationController.getPresentations);
+
+// static images
+presentationRouter.use(addPayloadToReq, guardRole(UserRole.VIEWER), express.static(path.join("static", "presentations")));
 
 export { presentationRouter };
