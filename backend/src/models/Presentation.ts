@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import { User } from "./User";
+const DEFAULT_IMAGE_NAME = "default.jpg";
 
 @Entity()
 export class Presentation {
@@ -19,5 +20,5 @@ export class Presentation {
   creationDate: Date = new Date();
 
   @Column()
-  imageName: string = "default.jpg";
+  imageName: string = DEFAULT_IMAGE_NAME;
 }

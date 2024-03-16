@@ -7,6 +7,7 @@ import { UserService } from "./userService";
 import { createToken } from "../utils/jwtUtils";
 import { comparePwd, hashPwd } from "../utils/passwordUtils";
 import { Repository } from "typeorm";
+import { ADMIN_EMAIL, ADMIN_NAME, ADMIN_PWD } from "../constants/admin";
 const UserRepository = AppDataSource.getRepository(User);
 dotenv.config();
 
@@ -37,10 +38,10 @@ export class AuthService {
 
   async defaultAdmin() {
     const UserRepository: Repository<User> = AppDataSource.getRepository(User);
-    const email: string = process.env.ADMIN_EMAIL || "admin@gmail.com";
-    const name: string = process.env.ADMIN_NAME || "admin";
+    const email: string = ADMIN_EMAIL;
+    const name: string = ADMIN_NAME;
     const role: UserRole = UserRole.ADMIN;
-    const password: string = process.env.ADMIN_PASSWORD || "admin";
+    const password: string = ADMIN_PWD;
     const admin = await UserRepository.findOneBy({ email });
     let token: String = "";
     if (admin) {
