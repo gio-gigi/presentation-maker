@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PresentationTile } from "../../components/presentation_tile/presentation_tile";
 import { usePresentationList } from "../../hooks/usePresentationList";
 import "./home_page.css";
@@ -12,6 +13,7 @@ export const HomePage = () => {
   }
   return (
     <div className="home-page">
+      <Link to="/presentation/maker">Upload</Link>
       <div className="presentation_list">
         {presentations.map((presentation) => (
           <PresentationTile key={presentation.id} presentation={presentation} />
