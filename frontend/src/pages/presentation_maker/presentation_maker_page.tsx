@@ -7,19 +7,19 @@ import { APIRequestStatusEnum } from '../../constants/api_request';
 import { FullPageLoader } from '../../components/full_page_loader/full_page_loader';
 import { HomePage } from '../home/home_page';
 import { InfoModal } from '../../components/info_modal/info_modal';
+import { useNavigate } from 'react-router-dom';
 
 export const PresentationMakerPage = () => {
     const {slides, onTextChange, content} = usePresentationMaker();
     const {status, uploadPresentation} = useUploadPresentation();
+    const navigate = useNavigate();
 
     const handleUpload = () => {
         uploadPresentation(content);
     }
 
     if (status.status === APIRequestStatusEnum.SUCCESS) {
-        return (
-            <HomePage></HomePage>
-        );
+        navigate('/', {replace: true});
     }
 
     if (status.status === APIRequestStatusEnum.LOADING) {
