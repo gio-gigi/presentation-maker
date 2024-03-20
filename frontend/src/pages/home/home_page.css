@@ -5,7 +5,6 @@
     width: 100%;
     height: 100%;
     background-color: rgb(237, 237, 237);
-    padding: 20px;
 }
 
 .presentation_list {
@@ -15,4 +14,5 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     overflow-y: scroll;
+    padding: 20px;
 }
