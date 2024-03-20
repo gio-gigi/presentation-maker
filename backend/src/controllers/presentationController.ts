@@ -43,7 +43,10 @@ export class PresentationController {
           title: title,
           imageURL: `${BASE_IMG_URL}${imageName}`,
           creationDate: creationDate,
-          emailCreator: user.email,
+          creator: {
+            email: user.email,
+            name: user.name,
+          },
         };
       })
     );
@@ -64,7 +67,10 @@ export class PresentationController {
         content: content,
         imageURL: `${BASE_IMG_URL}${imageName}`,
         creationDate: creationDate,
-        emailCreator: user.email,
+        creator: {
+          email: user.email,
+          name: user.name,
+        },
       };
       res.status(200).json({ presentation: presentationResponse });
     } catch (err) {
