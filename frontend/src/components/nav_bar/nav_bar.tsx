@@ -18,7 +18,7 @@ export const NavBar = () => {
       {ADMIN_ROLES.includes(user.role) && (
         <>
           <Link to="/presentation/maker" className="link">Crear Presentación</Link>
-          <Link to="#" className="link">Registrar un administrador</Link>
+          <Link to="/admin/register" className="link">Registrar un administrador</Link>
         </>
       )}
       <Link onClick={handleLogout} to="/login" className="link">
