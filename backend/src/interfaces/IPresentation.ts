@@ -4,5 +4,8 @@ export interface IPresentation {
   content?: string;
   imageURL: string;
   creationDate: Date;
-  emailCreator: string;
+  creator: {
+    email: string;
+    name: string;
+  };
 }
