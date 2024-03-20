@@ -8,6 +8,7 @@ import { PresentationVisualizationPage } from "../pages/presentation_visualizati
 import { RegisterPage } from "../pages/register/register_page";
 import { AuthContextProvider } from '../contexts/auth_context';
 import { LoginRoute } from './login_route';
+import { AdminRegisterPage } from "../pages/admin_register/admin_register_page";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +31,15 @@ export const router = createBrowserRouter([
             {
                 path: "/presentation/maker",
                 element: <PresentationMakerPage/>,
+            },
+        ]
+    },
+    {
+        element: <ProtectedRoute allowedRoles={ ADMIN_ROLES }/>,
+        children: [
+            {
+                path: "/admin/register",
+                element: <AdminRegisterPage/>,
             },
         ]
     },
