@@ -3,14 +3,15 @@ import { PresentationDatasource } from '../../../infrastructure/datasources/pres
 import { PresentationContentEntity } from '../../../infrastructure/entities/presentation_content';
 import { PresentationInfoEntity, PresentationToUploadEntity } from '../../../infrastructure/entities/presentation_entity';
 import { PresentationInfoModel } from '../../models/prod/presentation_info_model';
-import { presentationEntityfromPresentationModel } from '../../utils/presentation';
+import { presentationContentEntityFromPresentationContentModel, presentationInfoEntityfromPresentationInfoModel } from '../../utils/presentation';
+import { PresentationContentModel } from '../../models/prod/presentation_content_model';
 
 const API_URL = 'http://localhost:3001/';
 
 export class PresentationDatasourceProd implements PresentationDatasource {
     async getPresentationList(page: number): Promise<PresentationInfoEntity[]> {
         const {data, status} = await axios.get<{presentations: PresentationInfoModel[]}>(API_URL + 'api/presentation');
-        const presentations = data.presentations.map(presentationEntityfromPresentationModel);
+        const presentations = data.presentations.map(presentationInfoEntityfromPresentationInfoModel);
         return presentations;
     }
     async uploadPresentation(presentation: PresentationToUploadEntity): Promise<boolean> {
@@ -26,8 +27,13 @@ export class PresentationDatasourceProd implements PresentationDatasource {
         console.log(status);
         return status === 201;
     }
-    getPresentation(id: string): Promise<PresentationContentEntity> {
-        throw new Error('Method not implemented.');
+    async getPresentation(id: string): Promise<PresentationContentEntity> {
+        const { status, data } = await axios.get<{presentation: PresentationContentModel}>(API_URL + 'api/presentation/' + id);
+        console.log(data);
+        if (status !== 200) {
+            throw new Error('Error fetching presentation');
+        }
+        return presentationContentEntityFromPresentationContentModel(data.presentation);
     }
 
 }
