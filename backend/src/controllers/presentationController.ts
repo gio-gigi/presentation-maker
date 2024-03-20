@@ -37,16 +37,44 @@ export class PresentationController {
   getPresentations = async (req: Request, res: Response) => {
     const presentations: Presentation[] = await this.presentationService.getPresentations();
     const presentationsResponse: IPresentation[] = await Promise.all(
-      presentations.map(async ({ idPresentation, title, txtName, imageName, creationDate }) => {
+      presentations.map(async ({ idPresentation, title, txtName, imageName, creationDate, user }) => {
         return {
           idPresentation: idPresentation,
           title: title,
-          content: await readTxt(PATH_TO_STATICS_TXT + txtName),
           imageURL: `${BASE_IMG_URL}${imageName}`,
           creationDate: creationDate,
+          creator: {
+            email: user.email,
+            name: user.name,
+          },
         };
       })
     );
     res.status(200).json({ presentations: presentationsResponse });
+  };
+
+  getSinglePresentation = async (req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
+    if (!id) return next(new BadRequestError({ message: "Id is required" }));
+    try {
+      const presentation: Presentation = await this.presentationService.getSinglePresentation(Number(id));
+      const { title, txtName, imageName, creationDate, user } = presentation;
+
+      const content = await readTxt(PATH_TO_STATICS_TXT + txtName);
+      const presentationResponse: IPresentation = {
+        idPresentation: Number(id),
+        title: title,
+        content: content,
+        imageURL: `${BASE_IMG_URL}${imageName}`,
+        creationDate: creationDate,
+        creator: {
+          email: user.email,
+          name: user.name,
+        },
+      };
+      res.status(200).json({ presentation: presentationResponse });
+    } catch (err) {
+      next(err);
+    }
   };
 }

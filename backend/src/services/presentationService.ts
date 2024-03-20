@@ -1,7 +1,8 @@
 import { Presentation } from "../models/Presentation";
 import { AppDataSource } from "../config/data-source";
-import { Repository } from "typeorm";
+import { Not, Repository } from "typeorm";
 import { User } from "../models/User";
+import NotFoundError from "../errors/NotFoundError";
 
 export class PresentationService {
   private presentationRepository: Repository<Presentation>;
@@ -21,6 +22,21 @@ export class PresentationService {
   }
 
   public async getPresentations(): Promise<Presentation[]> {
-    return this.presentationRepository.find();
+    return this.presentationRepository
+      .createQueryBuilder("presentation")
+      .leftJoinAndSelect("presentation.user", "user")
+      .getMany();
+  }
+
+  public async getSinglePresentation(idPresentation: number): Promise<Presentation> {
+    try {
+      return this.presentationRepository
+        .createQueryBuilder("presentation")
+        .leftJoinAndSelect("presentation.user", "user")
+        .where({ idPresentation })
+        .getOneOrFail();
+    } catch (err) {
+      throw new NotFoundError({ message: "Presentation not found" });
+    }
   }
 }

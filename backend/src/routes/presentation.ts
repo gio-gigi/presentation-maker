@@ -26,7 +26,15 @@ presentationRouter.post(
 // get presentations
 presentationRouter.get("/api/presentation", addPayloadToReq, guardRole(UserRole.VIEWER), presentationController.getPresentations);
 
+// get single presentation
+presentationRouter.get(
+  "/api/presentation/:id",
+  addPayloadToReq,
+  guardRole(UserRole.VIEWER),
+  presentationController.getSinglePresentation
+);
+
 // static images
-presentationRouter.use(addPayloadToReq, guardRole(UserRole.VIEWER), express.static(path.join("static", "presentations")));
+presentationRouter.use(express.static(path.join("static", "presentations")));
 
 export { presentationRouter };
