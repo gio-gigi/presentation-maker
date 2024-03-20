@@ -20,8 +20,15 @@ export const useRegister = () => {
     const onSubmit: SubmitHandler<RegisterFormValues> = (data: RegisterFormValues) => {
         const authenticate = async () => {
             try{
+                const {password, password2} = data;
+                if(password!=password2){
+                    setError("password2",{
+                        type:"manual",
+                        message:"Las contraseñas no coinciden"
+                    })
+                    return;
+                }
                 const user = await registerRepository.getToken(data);
-                console.log(user);
                 login(user.user, user.token);
                 navigate("/");
             }catch(error: any){
