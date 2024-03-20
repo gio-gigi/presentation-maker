@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useLogin } from '../../hooks/useLogin'
 import './styles/style.css'
 
@@ -29,7 +30,7 @@ export const LoginPage = () => {
                         <input type="submit" value="Login"/>
                     </div>
                     <div className="signup-link">
-                        ¿No tienes cuenta? <a href="#">Regístrate</a>
+                        ¿No tienes cuenta? <Link to={'/register'}>Regístrate</Link>
                     </div>
                 </form>
             </div>
