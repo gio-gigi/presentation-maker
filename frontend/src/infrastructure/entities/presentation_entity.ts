@@ -1,3 +1,4 @@
+
 export interface PresentationInfoEntity {
     id: string;
     title: string;
@@ -10,4 +11,8 @@ export interface PresentationToUploadEntity {
     title?: string;
     image: Blob;
     file: string;
+}
+
+export interface PresentationToShowEntity {
+    content: string;
 }

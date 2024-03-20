@@ -10,3 +10,8 @@ export interface LoggedInUser {
     user: UserEntity;
     token: string;
 }
+
+export interface UserInfo {
+    name?: string;
+    email: string;
+}

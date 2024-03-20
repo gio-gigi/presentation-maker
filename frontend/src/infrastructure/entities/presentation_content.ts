@@ -1,4 +1,3 @@
 export interface PresentationContentEntity {
-    content: Blob;
-    contentType: string;
+    content: string;
 }
