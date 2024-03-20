@@ -127,6 +127,7 @@ form .signin-link a:hover{
 
 .password-box{
     display: grid;
+    align-items: center;
 }
 .password-box .field{
     grid-row: 1;
@@ -134,7 +135,8 @@ form .signin-link a:hover{
 }
 
 .password-box .pass-visibility-button{
-    margin-top: 20px;
     grid-row: 1;
     grid-column: 2;
+    margin-top: 20px;
+    margin-left: 2px;
 }
