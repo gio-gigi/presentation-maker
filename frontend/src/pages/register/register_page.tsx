@@ -4,6 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { usePasswoordVisibility } from "../../hooks/usePasswordVisibility";
+import { Link } from "react-router-dom";
 
 export const RegisterPage = () => {
     const {
@@ -69,7 +70,7 @@ export const RegisterPage = () => {
                         <input type="submit" value="Crear cuenta"/>
                     </div>
                     <div className="signin-link">
-                        ¿Ya tienes cuenta? <a href="#">Inicia sesión</a>
+                        ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
                     </div>
                 </form>
             </div>
