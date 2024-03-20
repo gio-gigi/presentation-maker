@@ -21,9 +21,8 @@ export const usePresentationVisualization = ({ id }: UsePresentationVisualizatio
             if (!id) {
                 throw new Error("No presentation id provided");
             }
-            const { content, contentType } = await presentationRepository.getPresentation(id);
-            const text = await file_to_formatted_text(content, contentType);
-            const currentSlides = Slides.formattedTextToSlides(text);
+            const { content } = await presentationRepository.getPresentation(id);
+            const currentSlides = Slides.formattedTextToSlides(content);
             setSlides(currentSlides);
             setStatus({status: APIRequestStatusEnum.SUCCESS});
             setCurrentSlideIndex(0);
