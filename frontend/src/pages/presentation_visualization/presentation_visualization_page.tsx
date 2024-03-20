@@ -9,6 +9,7 @@ import { AspectRatioEnum } from "../../constants/aspect_ratio";
 import { useFullScreen } from "../../hooks/useFullScreen";
 import { useDragControl } from "../../hooks/useDragControl";
 import { useArrowsControl } from "../../hooks/useArrowsControl";
+import { BackButton } from "../../components/back_button/back_button";
 
 export const PresentationVisualizationPage = () => {
   const { id } = useParams();
@@ -37,6 +38,9 @@ export const PresentationVisualizationPage = () => {
 
   return (
     <div className="page" ref={elementRef} tabIndex={0} onKeyDown={onKeyDown}>
+      {
+        !isFullScreen && <BackButton />
+      }
       {!isFullScreen && (
         <button onClick={handleFullscreenRequest} className="fullscreen-btn">
           Pantalla Completa
