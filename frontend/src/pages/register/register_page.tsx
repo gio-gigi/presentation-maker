@@ -1,10 +1,9 @@
 import { useRegister } from "../../hooks/useRegister"
-import './styles/style.css'
-import IconButton from "@material-ui/core/IconButton";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import './styles/style.css';
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePasswoordVisibility } from "../../hooks/usePasswordVisibility";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export const RegisterPage = () => {
     const {
@@ -26,12 +25,12 @@ export const RegisterPage = () => {
                 <div className="title">
                     Registro
                 </div>
-                {errors.email && <div className='error-message'>{errors.email.message}</div>}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="field">
                         <input type="email" {...register('email')} required placeholder=""/>
                         <label>Email</label>
                     </div>
+                    {errors.email && <div className='error-message'>{errors.email.message}</div>}
                     <div className="field">
                         <input type="text" {...register('name')} required placeholder=""/>
                         <label>Nombre</label>
@@ -52,25 +51,21 @@ export const RegisterPage = () => {
                                         ? "text"
                                         : "password"
                                     } 
-                                {...register('password')} required/>
+                                {...register('password2')} required/>
                             <label>Confirma la contraseña</label>
                         </div>
-                        <IconButton className="pass-visibility-button"
+                        <FontAwesomeIcon className="pass-visibility-button"
                             onClick={handleClickShowPassword}
                             onMouseDown={handleMouseDownPassword}
-                        >
-                            {values.showPassword ? (
-                                <Visibility />
-                            ) : (
-                                <VisibilityOff />
-                            )}
-                        </IconButton>
+                            icon={values.showPassword ? faEye : faEyeSlash}
+                        />
                     </div>
+                    {errors.password2 && <div className='error-message'>{errors.password2.message}</div>}
                     <div className="register-box">
                         <input type="submit" value="Crear cuenta"/>
                     </div>
                     <div className="signin-link">
-                        ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
+                        ¿Ya tienes cuenta? <Link to={'/login'}>Inicia sesión</Link>
                     </div>
                 </form>
             </div>
