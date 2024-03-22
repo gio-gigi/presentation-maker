@@ -12,8 +12,7 @@ export class PresentationDatasourceDev implements PresentationDatasource {
         const type = 'text/plain';
         const blob = new Blob([presentationContent], { type });
         return Promise.resolve({
-            content: blob,
-            contentType: type
+            content: presentationContent
         });
     }
     async uploadPresentation(presentation: PresentationToUploadEntity): Promise<boolean> {

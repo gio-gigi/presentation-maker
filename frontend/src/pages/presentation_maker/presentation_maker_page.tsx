@@ -8,6 +8,7 @@ import { FullPageLoader } from '../../components/full_page_loader/full_page_load
 import { HomePage } from '../home/home_page';
 import { InfoModal } from '../../components/info_modal/info_modal';
 import { useNavigate } from 'react-router-dom';
+import { BackButton } from '../../components/back_button/back_button';
 
 export const PresentationMakerPage = () => {
     const {slides, onTextChange, content} = usePresentationMaker();
@@ -31,6 +32,7 @@ export const PresentationMakerPage = () => {
 
     return (
         <div className='pm-page'>
+            <BackButton />
             {
                 status.status === APIRequestStatusEnum.ERROR && <InfoModal message='Error al subir la presentación, intentalo más tarde' />
             }
