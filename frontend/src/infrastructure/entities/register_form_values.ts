@@ -3,4 +3,5 @@ export interface RegisterFormValues {
     password : string
     password2: string
     name : string
+    userRole: string
 };
