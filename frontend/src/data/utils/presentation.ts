@@ -8,7 +8,7 @@ export const presentationInfoEntityfromPresentationInfoModel = (presentationMode
         id: presentationModel.idPresentation+'',
         title: presentationModel.title,
         imageUrl: presentationModel.imageURL,
-        author: 'Author Name',
+        author: presentationModel.creator.name || 'Anónimo',
         createdAt: presentationModel.creationDate
     };
 }
