@@ -20,7 +20,7 @@ export const useLogin = () => {
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
     const authenticate = async () => {
-      try {
+      try { 
         const { user, token } = await loginRepository.getToken(data);
         await login(user, token);
         navigate("/");
