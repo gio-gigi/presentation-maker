@@ -1,24 +1,21 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { RegisterFormValues } from "../infrastructure/entities/register_form_values";
-import { RegisterDatasourceDev } from "../data/datasources/register_datasource";
-import { RegisterRepositoryDev } from "../data/repositories/register_repository";
-import { useAuth } from "../contexts/auth_context";
-import { useNavigate } from "react-router-dom";
-const registerDatasource = new RegisterDatasourceDev();
-const registerRepository = new RegisterRepositoryDev(registerDatasource)
+import { AdminRegisterDatasourceData } from "../data/datasources/admin_register_datasource";
+import { AdminRegisterRepositoryData } from "../data/repositories/admin_register_repository";
+const registerDatasource = new AdminRegisterDatasourceData();
+const registerRepository = new AdminRegisterRepositoryData(registerDatasource)
 
-export const useRegister = () => {
+export const useAdminRegister = () => {
     const {
         register, 
         handleSubmit,
         setError,
+        setValue,
         formState : {errors}
     } = useForm<RegisterFormValues>();
-    const { login } = useAuth();
-    const navigate = useNavigate();
 
     const onSubmit: SubmitHandler<RegisterFormValues> = (data: RegisterFormValues) => {
-        const authenticate = async () => {
+        const createNewUser = async () => {
             try{
                 const {password, password2} = data;
                 if(password!=password2){
@@ -28,9 +25,8 @@ export const useRegister = () => {
                     })
                     return;
                 }
-                const user = await registerRepository.getToken(data);
-                login(user.user, user.token);
-                navigate("/");
+                const user = await registerRepository.createUser(data);
+                console.log("Created");
             }catch(error: any){
                 setError("email",{
                     type:"manual", 
@@ -38,7 +34,7 @@ export const useRegister = () => {
                 })
             }
         }
-        authenticate();
+        createNewUser();
     }
-    return {register, handleSubmit, onSubmit, errors};
+    return {register, handleSubmit, onSubmit, errors, setValue};
 }
