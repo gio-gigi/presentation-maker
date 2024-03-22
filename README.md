@@ -17,9 +17,13 @@ cd presentation-maker
 ```
 
 ### Install dependencies
+#### Change directory to /backend and run: 
 ```
-npm --prefix ./backend install
-npm --prefix ./frontend install
+npm install
+```
+#### Change directory to /frontend and run: 
+```
+npm install
 ```
 ### Add environment variables
 Create a .env file inside ./backend with the next variables (you can leave the values as they are except for DB_USER and DB_PWD)
@@ -35,15 +39,18 @@ SECRET_JWT=mysecret
 ADMIN_PWD=admin
 ADMIN_EMAIL=admin@gmail.com
 ADMIN_NAME=admin
+```
+### Create database
+#### Create a database in mysql as  $DB_NAME
 
+### Run proyect
+#### Change directory to /backend and run:
 ```
-### Run backend
+npm start
 ```
-npm --prefix ./backend/ start
+#### Change directory to /frontend and run: 
 ```
-### Run frontend 
-```
-npm --prefix ./frontend start
+npm start
 ```
 
 
