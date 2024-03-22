@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePasswoordVisibility } from "../../hooks/usePasswordVisibility";
 import { useUserSelecter } from "../../hooks/useUserSelecter";
 import { UserRole } from "../../constants/roles";
+import { useEffect } from "react";
 
 export const AdminRegisterPage = () => {
     const {
@@ -14,6 +15,7 @@ export const AdminRegisterPage = () => {
         onSubmit, 
         handleSubmit,
         errors,
+        setValue
     } = useAdminRegister()
 
     const {
@@ -27,6 +29,13 @@ export const AdminRegisterPage = () => {
         handleClickChangeIcon,
         handleMouseDownIconSelecter,
     } = useUserSelecter()
+
+    useEffect(() => {
+        setValue(
+            "userRole",
+            valuesIcon.adminIcon ? UserRole.ADMIN : UserRole.VIEWER
+        );
+    }, [valuesIcon]);
 
     return (
         <div className="admin-register-root">
@@ -44,7 +53,6 @@ export const AdminRegisterPage = () => {
                                 icon={valuesIcon.adminIcon ? faUserTie : faUser}
                             />
                             <div className="admin-register-user-selector-label">{valuesIcon.adminIcon ? "Admin" : "Espectador"}</div>
-                            <input type="hidden" {...register('userRole')} value={valuesIcon.adminIcon ? UserRole.ADMIN : UserRole.VIEWER}/>
                         </div>
                         <div className="admin-register-form-fields">
                             <div className="admin-register-field">

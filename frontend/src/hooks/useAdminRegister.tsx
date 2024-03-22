@@ -10,6 +10,7 @@ export const useAdminRegister = () => {
         register, 
         handleSubmit,
         setError,
+        setValue,
         formState : {errors}
     } = useForm<RegisterFormValues>();
 
@@ -35,5 +36,5 @@ export const useAdminRegister = () => {
         }
         createNewUser();
     }
-    return {register, handleSubmit, onSubmit, errors};
+    return {register, handleSubmit, onSubmit, errors, setValue};
 }
