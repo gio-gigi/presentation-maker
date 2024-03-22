@@ -1,0 +1,165 @@
+.admin-register-root{
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    width: 100vw;
+    background: #EDEDED;
+}
+
+.admin-register-nav-bar {
+    display: flex;
+    width: 100vw;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.admin-register-title{
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+    user-select: none;
+}
+
+.admin-register-conteiner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    flex-grow: 1;
+}
+
+.admin-register-form-conteiner{
+    background: #fff;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.admin-register-form-conteiner form{
+    display: flex;
+    padding: 20px;
+}
+
+.admin-register-form-user-selector-container{
+    display: flex;
+    flex-flow: column;
+    grid.row : 1;
+    grid.column : 1;
+    padding: 0 20px 0 20px;
+}
+
+.admin-register-user-selector-icon {
+    height: 150px;
+    cursor: pointer;
+}
+
+.admin-register-user-selector-label {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+    user-select: none;
+    text-align: center;
+}
+
+.admin-register-form-fields{
+    grid.row : 1;
+    grid.column : 2;
+}
+
+.admin-register-form-conteiner form .admin-register-field{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+
+.admin-register-form-conteiner form .admin-register-field input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 17px;
+    padding-left: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.admin-register-form-conteiner form .admin-register-field input:focus,
+.admin-register-form-conteiner form .admin-register-field input:valid{
+  border-color: #4158d0;
+}
+
+.admin-register-form-conteiner form .admin-register-field label{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    color: #999999;
+    font-weight: 400;
+    font-size: 17px;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+form .admin-register-field input:focus ~ label,
+form .admin-register-field input:valid ~ label,
+form .admin-register-field input[type="email"]:not(:placeholder-shown) ~ label,
+form .admin-register-field input[type="email"]:focus ~ label {
+    top: 0%;
+    font-size: 16px;
+    color: #4158d0;
+    background: #fff;
+    transform: translateY(-50%);
+}
+
+.admin-register-form-conteiner form .admin-register-register-box{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+
+form .admin-register-register-box input{  
+    color: #fff;
+    border: none;
+    padding-left: 0;
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background: linear-gradient(-135deg, #6F6D6E, #000000);
+    transition: all 0.3s ease;
+    width: 100%;
+    border-radius: 5px;
+}
+
+form .admin-register-register-box input:active{
+    transform: scale(0.95);
+}
+
+.admin-register-error-message{
+    color: red;
+}
+
+.admin-register-password-box{
+    display: grid;
+    align-items: center;
+}
+.admin-register-password-box .admin-register-field{
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.admin-register-password-box .admin-register-pass-visibility-button{
+    grid-row: 1;
+    grid-column: 2;
+    margin-top: 20px;
+    margin-left: 2px;
+}
