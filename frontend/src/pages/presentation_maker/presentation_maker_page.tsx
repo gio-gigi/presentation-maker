@@ -11,12 +11,12 @@ import { useNavigate } from 'react-router-dom';
 import { BackButton } from '../../components/back_button/back_button';
 
 export const PresentationMakerPage = () => {
-    const {slides, onTextChange, content} = usePresentationMaker();
+    const {slides, onTextChange, content, onTitleChange, title} = usePresentationMaker();
     const {status, uploadPresentation} = useUploadPresentation();
     const navigate = useNavigate();
 
     const handleUpload = () => {
-        uploadPresentation(content);
+        uploadPresentation(content, title);
     }
 
     if (status.status === APIRequestStatusEnum.SUCCESS) {
@@ -34,9 +34,9 @@ export const PresentationMakerPage = () => {
         <div className='pm-page'>
             <BackButton />
             {
-                status.status === APIRequestStatusEnum.ERROR && <InfoModal message='Error al subir la presentación, intentalo más tarde' />
+                status.status === APIRequestStatusEnum.ERROR && <InfoModal message={status.message || 'Error inesperado'} />
             }
-            <PresentationEditor onTextChange={onTextChange} />
+            <PresentationEditor onTextChange={onTextChange} onTitleChange={onTitleChange}/>
             <PresentationPreview slides={slides}/>
             {
                 slides.length > 0 && <button className='upload-button' onClick={handleUpload}>Subir Presentacion</button>

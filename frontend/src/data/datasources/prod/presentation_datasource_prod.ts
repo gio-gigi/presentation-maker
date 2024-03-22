@@ -5,12 +5,15 @@ import { PresentationInfoEntity, PresentationToUploadEntity } from '../../../inf
 import { PresentationInfoModel } from '../../models/prod/presentation_info_model';
 import { presentationContentEntityFromPresentationContentModel, presentationInfoEntityfromPresentationInfoModel } from '../../utils/presentation';
 import { PresentationContentModel } from '../../models/prod/presentation_content_model';
+import UnauthorizedError from '../../../errors/UnautherizedError';
 
 const API_URL = 'http://localhost:3001/';
 
 export class PresentationDatasourceProd implements PresentationDatasource {
     async getPresentationList(page: number): Promise<PresentationInfoEntity[]> {
         const {data, status} = await axios.get<{presentations: PresentationInfoModel[]}>(API_URL + 'api/presentation');
+        
+        console.log(data);
         const presentations = data.presentations.map(presentationInfoEntityfromPresentationInfoModel);
         return presentations;
     }
@@ -24,7 +27,9 @@ export class PresentationDatasourceProd implements PresentationDatasource {
             'Content-Type': 'multipart/form-data'
         };
         const {status} = await axios.post(API_URL + 'api/presentation', form, {headers});
-        console.log(status);
+        if (status === 401) {
+            throw new UnauthorizedError({code: 401, message: 'Unauthorized'});
+        }
         return status === 201;
     }
     async getPresentation(id: string): Promise<PresentationContentEntity> {

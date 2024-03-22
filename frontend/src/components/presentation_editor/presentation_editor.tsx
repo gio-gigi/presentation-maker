@@ -9,18 +9,25 @@ import { useAlert } from "../../hooks/useAlert";
 
 interface PresentationEditorProps {
   onTextChange: (text: string) => void;
+  onTitleChange: (title: string) => void;
 }
 
 export const PresentationEditor = ({
   onTextChange,
+  onTitleChange
 }: PresentationEditorProps) => {
   const { isHelpVisible, handleHelp, closeHelp } = useAlert();
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     onTextChange(event.target.value);
   };
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onTitleChange(event.target.value);
+  };
+
   return (
     <div className="pe-container">
       <h2 className="title">Ingresa el contenido de la presentación</h2>
+      <input type="text" className="title-input" placeholder="Título de la presentación" onChange={handleTitleChange}/>
       <div className="tools">
         <OptionSelector
           title="Tipos de letra disponibles"
