@@ -2,6 +2,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { RegisterFormValues } from "../infrastructure/entities/register_form_values";
 import { AdminRegisterDatasourceData } from "../data/datasources/admin_register_datasource";
 import { AdminRegisterRepositoryData } from "../data/repositories/admin_register_repository";
+import { useNavigate, useNavigation } from "react-router-dom";
+import { useConfirmMessage } from "../contexts/confirm_message_context";
 const registerDatasource = new AdminRegisterDatasourceData();
 const registerRepository = new AdminRegisterRepositoryData(registerDatasource)
 
@@ -13,6 +15,8 @@ export const useAdminRegister = () => {
         setValue,
         formState : {errors}
     } = useForm<RegisterFormValues>();
+    const navigation = useNavigate();
+    const { showMessage } = useConfirmMessage();
 
     const onSubmit: SubmitHandler<RegisterFormValues> = (data: RegisterFormValues) => {
         const createNewUser = async () => {
@@ -25,8 +29,9 @@ export const useAdminRegister = () => {
                     })
                     return;
                 }
-                const user = await registerRepository.createUser(data);
-                console.log("Created");
+                await registerRepository.createUser(data);
+                showMessage("Usuario creado con exito");
+                navigation("/");
             }catch(error: any){
                 setError("email",{
                     type:"manual", 

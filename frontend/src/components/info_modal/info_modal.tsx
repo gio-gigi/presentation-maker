@@ -5,9 +5,11 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface InfoModalProps {
   message: string;
+  callback?: () => void;
+  isAlert: boolean;
 }
 
-export const InfoModal = ({message}: InfoModalProps) => {
+export const InfoModal = ({message, callback, isAlert}: InfoModalProps) => {
   const [visible, setVisible] = useState(true);
 
   if (!visible) {
@@ -15,9 +17,18 @@ export const InfoModal = ({message}: InfoModalProps) => {
   }
     
   return (
-    <div className="modal-container">
+    <div className="modal-container"
+      style={{
+        backgroundColor: isAlert ? 'rgb(234, 53, 53)' : 'green'
+      }}
+    >
       <p>{message}</p>
-      <button onClick={() => setVisible(false)} className="close-btn">
+      <button onClick={() => {
+        setVisible(false);
+        if (callback) {
+          callback();
+        }
+      }} className="close-btn">
         <FontAwesomeIcon icon={faTimes} size='2x'/>
       </button>
     </div>
