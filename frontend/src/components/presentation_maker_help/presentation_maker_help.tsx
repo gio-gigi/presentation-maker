@@ -30,6 +30,22 @@ export const PresentationMakerHelp = ({ closeHelp }: PresentationMakerHelpProps)
                     }
                 </code>
 
+                <h4>Crear un titulo</h4>
+                <p>Para crear un nuevo titulo, se necesita estar dentro del contenido de un slide y utilizar la siguiente sintaxis:</p>
+                <code>
+                    {
+                        "/title[tamaño,tipo de letra]("
+                    }
+                    <br />
+                    {
+                        "contenido del titulo (puede ser multilinea)"
+                    }
+                    <br />
+                    {
+                        ")"
+                    }
+                </code>
+
                 <h4>Crear un texto</h4>
                 <p>Para crear un nuevo texto, se necesita estar dentro del contenido de un slide y utilizar la siguiente sintaxis:</p>
                 <code>
