@@ -1,6 +1,6 @@
 import { AvailableFontWeights, AvailableFonts } from '../../constants/font';
 import { SlideTextEntity, VisualizableSlideEntity } from '../../infrastructure/entities/presentation_preview_entity';
-import { PresentationMakerPage } from '../../pages/presentation_maker/presentation_maker_page';
+
 export class Slides {
     private static extractSlides(formattedText: string): string[] {
         const pattern = /\/slide\{(\s)*([\s\S]*?)(\s)*\}/g;
@@ -12,7 +12,28 @@ export class Slides {
         return slides;
     }
 
-    private static extractSlideContent(slide: string): SlideTextEntity[] {
+    private static extractSlideTitle(slide: string): SlideTextEntity | null{
+        const pattern = /\/title\[(\d+),([a-zA-Z | \s]+)\]\((\s)*([\s\S]*?)(\s)*\)/gm;
+        const result = slide.matchAll(pattern);
+        let title: SlideTextEntity | undefined = undefined;
+        for(const match of result){
+            const isValidFontName = AvailableFonts.some((font) => font === match[2]);
+            if (!isValidFontName) {
+                continue;
+            }
+            const lines = match[4].split('\n');
+            title = {
+                lines: lines,
+                fontSize: parseInt(match[1]),
+                fontFamily: match[2],
+                fontWeigth: 'bold'
+            };
+            return title;
+        }
+        return null;
+    }
+
+    private static extractSlideTexts(slide: string): SlideTextEntity[] {
         const pattern = /\/text\[(\d+),([a-zA-Z | \s]+),([a-z]+)\]\((\s)*([\s\S]*?)(\s)*\)/g;
         const result = slide.matchAll(pattern);
         let content: SlideTextEntity[] = [];
@@ -31,6 +52,12 @@ export class Slides {
             });
         }
         return content;
+    }
+
+    private static extractSlideContent(slide: string): SlideTextEntity[] {
+        const title = this.extractSlideTitle(slide+'');
+        const texts = this.extractSlideTexts(slide+'');
+        return title ? [title, ...texts] : texts;
     }
 
     public static formattedTextToSlides(formattedText: string): VisualizableSlideEntity[] {
