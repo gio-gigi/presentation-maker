@@ -27,23 +27,25 @@ export const RegisterPage = () => {
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="field">
-                        <input type="email" {...register('email')} required placeholder=""/>
+                        <input type="text" {...register('email')} placeholder=""/>
                         <label>Email</label>
                     </div>
                     {errors.email && <div className='error-message'>{errors.email.message}</div>}
                     <div className="field">
-                        <input type="text" {...register('name')} required placeholder=""/>
+                        <input type="text" {...register('name')} placeholder=""/>
                         <label>Nombre</label>
                     </div>
+                    {errors.name && <div className='error-message'>{errors.name.message}</div>}
                     <div className="field">
                         <input type={
                                         values.showPassword
                                         ? "text"
                                         : "password"
                                     } 
-                                     {...register('password')} required/>
+                                     {...register('password')}/>
                         <label>Contraseña</label>
                     </div>
+                    {errors.password && <div className='error-message'>{errors.password.message}</div>}
                     <div className="password-box">
                         <div className="field">
                             <input type={
@@ -51,7 +53,7 @@ export const RegisterPage = () => {
                                         ? "text"
                                         : "password"
                                     } 
-                                {...register('password2')} required/>
+                                {...register('confirmPassword')}/>
                             <label>Confirma la contraseña</label>
                         </div>
                         <FontAwesomeIcon className="pass-visibility-button"
@@ -60,7 +62,7 @@ export const RegisterPage = () => {
                             icon={values.showPassword ? faEye : faEyeSlash}
                         />
                     </div>
-                    {errors.password2 && <div className='error-message'>{errors.password2.message}</div>}
+                    {errors.confirmPassword && <div className='error-message'>{errors.confirmPassword.message}</div>}
                     <div className="register-box">
                         <input type="submit" value="Crear cuenta"/>
                     </div>
