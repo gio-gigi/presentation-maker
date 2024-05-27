@@ -42,7 +42,8 @@ export const RegisterPage = () => {
                                         ? "text"
                                         : "password"
                                     } 
-                                     {...register('password')}/>
+                                     {...register('password')}
+                                     placeholder=""/>
                         <label>Contraseña</label>
                     </div>
                     {errors.password && <div className='error-message'>{errors.password.message}</div>}
@@ -53,7 +54,8 @@ export const RegisterPage = () => {
                                         ? "text"
                                         : "password"
                                     } 
-                                {...register('confirmPassword')}/>
+                                {...register('confirmPassword')}
+                                placeholder=""/>
                             <label>Confirma la contraseña</label>
                         </div>
                         <FontAwesomeIcon className="pass-visibility-button"
