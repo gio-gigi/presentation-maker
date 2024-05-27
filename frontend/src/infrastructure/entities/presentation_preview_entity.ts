@@ -12,3 +12,7 @@ export interface SlideTextEntity {
     fontFamily: string;
     fontWeigth: string;
 }
+
+export interface SlideV2Entity {
+    content: string;
+}

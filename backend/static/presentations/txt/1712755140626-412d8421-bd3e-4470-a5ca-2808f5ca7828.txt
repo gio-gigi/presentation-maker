@@ -1,0 +1,139 @@
+/slide{
+/title[40,Arial](
+Inteligencia Artificial
+)
+
+/text[30,Arial,normal](
+La inteligencia artificial es la simulación de procesos de inteligencia humana mediante la programación de sistemas computacionales. Su objetivo es desarrollar sistemas capaces de realizar tareas que requieren inteligencia humana, como el reconocimiento de patrones, el aprendizaje, la planificación, el razonamiento y la toma de decisiones.
+)
+}
+
+/slide{
+/title[40,Arial](
+Historia de la IA
+)
+
+/text[30,Arial,normal](
+La historia de la inteligencia artificial se remonta a la década de 1950, cuando científicos como Alan Turing y John McCarthy comenzaron a explorar la posibilidad de crear máquinas inteligentes. A lo largo de los años, la IA ha pasado por varias etapas de desarrollo, desde la lógica simbólica hasta el aprendizaje profundo y el aprendizaje automático.
+)
+}
+
+/slide{
+/title[40,Arial](
+Tipos de IA
+)
+
+/text[30,Arial,normal](
+Existen varios tipos de inteligencia artificial, incluyendo la IA débil y la IA fuerte. La IA débil se centra en tareas específicas y limitadas, mientras que la IA fuerte aspira a replicar la inteligencia humana en su totalidad. Otros tipos incluyen la IA estrecha, que se especializa en una sola tarea, y la IA general, que puede realizar una amplia gama de tareas cognitivas.
+)
+}
+
+/slide{
+/title[40,Arial](
+Aplicaciones de la IA
+)
+
+/text[30,Arial,normal](
+La inteligencia artificial tiene numerosas aplicaciones en diversos campos, como la medicina, la industria, el comercio electrónico, la automoción y la seguridad. Algunos ejemplos incluyen sistemas de diagnóstico médico, sistemas de recomendación de productos, vehículos autónomos, y sistemas de detección de fraudes.
+)
+}
+
+/slide{
+/title[40,Arial](
+Aprendizaje Automático
+)
+
+/text[30,Arial,normal](
+El aprendizaje automático es una subdisciplina de la inteligencia artificial que se centra en el desarrollo de algoritmos y modelos que permiten a las computadoras aprender a partir de datos y realizar tareas sin ser programadas explícitamente para ello. El aprendizaje automático se utiliza en una amplia gama de aplicaciones, como el reconocimiento de voz, la detección de spam y la conducción autónoma.
+)
+}
+
+/slide{
+/title[40,Arial](
+Redes Neuronales Artificiales
+)
+
+/text[30,Arial,normal](
+Las redes neuronales artificiales son modelos computacionales inspirados en el funcionamiento del cerebro humano. Están formadas por capas de neuronas interconectadas que procesan la información y generan resultados. Las redes neuronales se utilizan en numerosas aplicaciones de IA, como el reconocimiento de imágenes, el procesamiento del lenguaje natural y la predicción de datos.
+)
+}
+
+/slide{
+/title[40,Arial](
+Ética en la IA
+)
+
+/text[30,Arial,normal](
+El desarrollo y uso de la inteligencia artificial plantea importantes cuestiones éticas y morales. Entre ellas se encuentran preocupaciones sobre la privacidad, la discriminación algorítmica, la seguridad y el impacto en el empleo. Es fundamental abordar estas cuestiones para garantizar que la IA se utilice de manera responsable y beneficiosa para la sociedad.
+)
+}
+
+/slide{
+/title[40,Arial](
+Desafíos de la IA
+)
+
+/text[30,Arial,normal](
+La inteligencia artificial enfrenta diversos desafíos, como la interpretación y comprensión de los resultados de los modelos, la garantía de la equidad y la transparencia en los algoritmos, y la protección contra el sesgo y la manipulación. Además, existe la preocupación por el impacto socioeconómico de la automatización en el mercado laboral.
+)
+}
+
+/slide{
+/title[40,Arial](
+Futuro de la IA
+)
+
+/text[30,Arial,normal](
+El futuro de la inteligencia artificial promete avances significativos en áreas como la salud, la educación, la movilidad y la sostenibilidad. Se espera que la IA continúe transformando la forma en que vivimos y trabajamos, aunque también es importante abordar los desafíos éticos y sociales que surgen con su desarrollo.
+)
+}
+
+/slide{
+/title[40,Arial](
+Impacto Económico de la IA
+)
+
+/text[30,Arial,normal](
+La inteligencia artificial tiene un impacto significativo en la economía global, con el potencial de impulsar la productividad, la eficiencia y la innovación en diversas industrias. Se espera que la IA genere nuevas oportunidades de empleo en roles relacionados con la tecnología y la ciencia de datos, aunque también puede afectar negativamente a ciertos sectores tradicionales.
+)
+}
+
+/slide{
+/title[40,Arial](
+Desarrollo de la IA
+)
+
+/text[30,Arial,normal](
+El desarrollo de la inteligencia artificial requiere una combinación de investigación científica, innovación tecnológica y colaboración entre diversos sectores. Es fundamental invertir en infraestructuras de datos, talento humano y regulaciones adecuadas para fomentar el crecimiento sostenible y ético de la IA.
+)
+}
+
+/slide{
+/title[40,Arial](
+Riesgos de la IA
+)
+
+/text[30,Arial,normal](
+Aunque la inteligencia artificial ofrece numerosos beneficios, también conlleva ciertos riesgos y desafíos, como la dependencia excesiva de la tecnología, la pérdida de control humano sobre los sistemas autónomos y la amplificación de la desigualdad social. Es importante gestionar estos riesgos de manera proactiva y responsable.
+)
+}
+
+/slide{
+/title[40,Arial](
+Interacción Humano-IA
+)
+
+/text[30,Arial,normal](
+La interacción entre humanos y sistemas de inteligencia artificial es cada vez más común en nuestra vida cotidiana. Esta interacción plantea desafíos en términos de comprensión mutua, confianza y responsabilidad. Es fundamental diseñar sistemas de IA que sean intuitivos, transparentes y éticos para promover una colaboración efectiva.
+)
+}
+
+/slide{
+/title[40,Arial](
+IA y Creatividad
+)
+
+/text[30,Arial,normal](
+La inteligencia artificial también está comenzando a desempeñar un papel en el ámbito creativo, ayudando a generar arte, música, literatura y diseño. Si bien la IA puede proporcionar herramientas y sugerencias útiles, aún se debate sobre si puede verdaderamente
+)
+}
