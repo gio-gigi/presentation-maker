@@ -1,0 +1,7 @@
+/slide{
+/title[70,Arial](IA)
+
+/text[30,Arial,normal](
+La IA es divertida.
+)
+}

@@ -1,0 +1,5 @@
+/slide{
+/title[100,Arial](
+    Doctrina Truman
+)
+}
