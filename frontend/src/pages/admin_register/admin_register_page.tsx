@@ -56,7 +56,7 @@ export const AdminRegisterPage = () => {
                         </div>
                         <div className="admin-register-form-fields">
                             <div className="admin-register-field">
-                                <input type="email" {...register('email')} placeholder=""/>
+                                <input type="text" {...register('email')} placeholder=""/>
                                 <label>Email</label>
                             </div>
                             {errors.email && <div className='admin-register-error-message'>{errors.email.message}</div>}
@@ -71,7 +71,9 @@ export const AdminRegisterPage = () => {
                                                 ? "text"
                                                 : "password"
                                             } 
-                                            {...register('password')}/>
+                                            {...register('password')}
+                                        placeholder=""
+                                />
                                 <label>Contraseña</label>
                             </div>
                             {errors.password && <div className='error-message'>{errors.password.message}</div>}
@@ -82,7 +84,8 @@ export const AdminRegisterPage = () => {
                                                 ? "text"
                                                 : "password"
                                             } 
-                                        {...register('confirmPassword')}/>
+                                        {...register('confirmPassword')}
+                                        placeholder=""/>
                                     <label>Confirma la contraseña</label>
                                 </div>
                                 <FontAwesomeIcon className="admin-register-pass-visibility-button"
