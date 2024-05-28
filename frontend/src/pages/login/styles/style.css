@@ -15,7 +15,7 @@
     width: 100vw;
 }
 
-.wrapper {
+.login-wrapper {
     width: 380px;
     background: #fff;
     border-radius: 15px;
@@ -24,7 +24,7 @@
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
 
-.wrapper .title{
+.login-wrapper .title{
     font-size: 35px;
     font-weight: 600;
     width: 100%;
@@ -36,34 +36,36 @@
     background: linear-gradient(-140deg, #c850c0, #4158d0);
 }
 
-.wrapper form{
+.login-wrapper form{
     padding: 10px 40px 50px 30px;
 }
 
-.wrapper form .field{
+.login-wrapper form .field{
     height: 50px;
     width: 100%;
     margin-top: 20px;
     position: relative;
 }
 
-.wrapper form .field input{
+.login-wrapper form .field input{
     height: 100%;
     width: 100%;
     outline: none;
     font-size: 17px;
     padding-left: 20px;
+    padding-right: 30px;
     border: 1px solid lightgrey;
     border-radius: 15px;
     transition: all 0.3s ease;
 }
 
-.wrapper form .field input:focus,
-form .field input:valid{
+.login-wrapper form .field input:focus,
+form .field input:not(:placeholder-shown){
   border-color: #4158d0;
 }
 
-.wrapper form .field label{position: absolute;
+.login-wrapper form .field label{
+    position: absolute;
     top: 50%;
     left: 20px;
     color: #999999;
@@ -76,9 +78,7 @@ form .field input:valid{
 
 
 form .field input:focus ~ label,
-form .field input:valid ~ label,
-form .field input[type="email"]:not(:placeholder-shown) ~ label,
-form .field input[type="email"]:focus ~ label {
+form .field input:not(:placeholder-shown) ~ label{
     top: 0%;
     font-size: 16px;
     color: #4158d0;
@@ -86,7 +86,7 @@ form .field input[type="email"]:focus ~ label {
     transform: translateY(-50%);
 }
 
-.wrapper form .login-box{
+.login-wrapper form .login-box{
     height: 50px;
     width: 100%;
     margin-top: 20px;
@@ -120,6 +120,110 @@ form .signup-link a:hover{
     text-decoration: underline;
 }
 
-.error-message{
+.server-error-window {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 500px;
+    height: 200px;
+    z-index: 2;
+    box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 50px;
+    text-align: center;
+    user-select: none;
+}
+
+.window-error-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    justify-content: center;
+    height: 20%;
+}
+
+.window-title{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.window-title div{
+    color: white;
+}
+
+.window-close-button{
+    color: rgb(51, 50, 50);
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+}
+
+.window-error-body{
+    display: flex;
+    flex-grow: 1;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 50px;
+}
+
+.circle-exclamation-icon{
     color: red;
+    height: 50px;
+    margin: 20px;
+}
+
+.loading_spinner{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 3;
+    width: 150px;
+    padding: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #25b09b;
+    --_m: 
+        conic-gradient(#0000 10%,#000),
+        linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+    animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
+
+.login_error{
+    color: red;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}  
+
+.login-wrapper form .field  .pass-visibility-button{
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
 }

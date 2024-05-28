@@ -10,6 +10,7 @@ import { AuthContextProvider } from '../contexts/auth_context';
 import { LoginRoute } from './login_route';
 import { AdminRegisterPage } from "../pages/admin_register/admin_register_page";
 import { PresentationMakerPageV2 } from '../pages/presentation_maker/presentation_maker_page_v2';
+import { FileUploader } from "../pages/file_uploader/file_uploader";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,15 @@ export const router = createBrowserRouter([
             {
                 path: "/admin/register",
                 element: <AdminRegisterPage/>,
+            },
+        ]
+    },
+    {
+        element: <ProtectedRoute allowedRoles={ ADMIN_ROLES }/>,
+        children: [
+            {
+                path: "/file/uploader",
+                element: <FileUploader/>,
             },
         ]
     },

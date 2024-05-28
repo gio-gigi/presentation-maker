@@ -49,8 +49,6 @@
 .admin-register-form-user-selector-container{
     display: flex;
     flex-flow: column;
-    grid.row : 1;
-    grid.column : 1;
     padding: 0 20px 0 20px;
 }
 
@@ -66,11 +64,6 @@
     font-weight: 500;
     user-select: none;
     text-align: center;
-}
-
-.admin-register-form-fields{
-    grid.row : 1;
-    grid.column : 2;
 }
 
 .admin-register-form-conteiner form .admin-register-field{
@@ -92,7 +85,7 @@
 }
 
 .admin-register-form-conteiner form .admin-register-field input:focus,
-.admin-register-form-conteiner form .admin-register-field input:valid{
+.admin-register-form-conteiner form .admin-register-field input:not(:placeholder-shown){
   border-color: #4158d0;
 }
 
@@ -108,10 +101,8 @@
     transition: all 0.3s ease;
 }
 
-form .admin-register-field input:focus ~ label,
-form .admin-register-field input:valid ~ label,
-form .admin-register-field input[type="email"]:not(:placeholder-shown) ~ label,
-form .admin-register-field input[type="email"]:focus ~ label {
+form .admin-register-field input:focus ~ label, 
+form .admin-register-field input:not(:placeholder-shown) ~ label{
     top: 0%;
     font-size: 16px;
     color: #4158d0;
