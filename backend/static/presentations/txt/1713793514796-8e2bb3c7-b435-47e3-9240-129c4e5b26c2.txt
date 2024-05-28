@@ -1,0 +1,49 @@
+/slide{
+/text[60,Arial,bold](
+    Introducción a la Guerra Fría
+)
+/text[40,Arial,normal](
+    La Guerra Fría fue un conflicto geopolítico entre las potencias occidentales lideradas por Estados Unidos y las potencias comunistas lideradas por la Unión Soviética.
+)
+}
+
+/slide{
+/text[60,Arial,bold](
+    Antecedentes
+)
+/text[40,Arial,normal](
+    - Final de la Segunda Guerra Mundial.
+    - Ideológicas diferencias entre el capitalismo y el comunismo.
+    - División de Alemania y de Berlín.
+)
+}
+
+/slide{
+/text[60,Arial,bold](
+    La Cortina de Hierro
+)
+/text[40,Arial,normal](
+    - Término que describe la división ideológica y política de Europa.
+    - Churchill popularizó el término en su famoso discurso de 1946.
+)
+}
+
+/slide{
+/text[60,Arial,bold](
+    Carrera Armamentista
+)
+/text[40,Arial,normal](
+    - Competencia entre Estados Unidos y la Unión Soviética para desarrollar y acumular armas nucleares.
+    - Temor a la destrucción mutua asegurada (MAD).
+)
+}
+
+/slide{
+/text[60,Arial,bold](
+    Guerra de Corea
+)
+/text[40,Arial,normal](
+    - Conflictos entre Corea del Norte (comunista) y Corea del Sur (capitalista).
+    - Intervención de Estados Unidos y la Unión Soviética.
+)
+}
