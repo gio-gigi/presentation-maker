@@ -9,6 +9,7 @@ import { RegisterPage } from "../pages/register/register_page";
 import { AuthContextProvider } from '../contexts/auth_context';
 import { LoginRoute } from './login_route';
 import { AdminRegisterPage } from "../pages/admin_register/admin_register_page";
+import { PresentationMakerPageV2 } from '../pages/presentation_maker/presentation_maker_page_v2';
 
 export const router = createBrowserRouter([
     {
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/presentation/maker",
-                element: <PresentationMakerPage/>,
+                element: <PresentationMakerPageV2/>,
             },
         ]
     },
