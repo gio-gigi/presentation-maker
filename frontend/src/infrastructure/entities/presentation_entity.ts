@@ -16,3 +16,12 @@ export interface PresentationToUploadEntity {
 export interface PresentationToShowEntity {
     content: string;
 }
+
+export interface SlideJson {
+    pageNumber: number;
+    content:    string;
+}
+
+export interface PresentationJson {
+    slideJson: SlideJson[];
+}
