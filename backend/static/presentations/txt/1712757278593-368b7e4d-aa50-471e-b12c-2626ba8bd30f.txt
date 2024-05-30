@@ -1,0 +1,8 @@
+/slide{
+/title[30,Arial](
+contenido del titulo (puede ser multilinea)
+)
+/text[22,Arial,normal](
+contenido del texto puede ser multilinea
+)
+}

@@ -19,6 +19,7 @@ export const NavBar = () => {
         <>
           <Link to="/presentation/maker" className="link">Crear Presentación</Link>
           <Link to="/admin/register" className="link">Registrar un administrador</Link>
+          <Link to="/file/uploader" className="link">Subir presentacion</Link>
         </>
       )}
       <Link onClick={handleLogout} to="/login" className="link">

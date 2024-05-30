@@ -56,23 +56,27 @@ export const AdminRegisterPage = () => {
                         </div>
                         <div className="admin-register-form-fields">
                             <div className="admin-register-field">
-                                <input type="email" {...register('email')} required placeholder=""/>
+                                <input type="text" {...register('email')} placeholder=""/>
                                 <label>Email</label>
                             </div>
                             {errors.email && <div className='admin-register-error-message'>{errors.email.message}</div>}
                             <div className="admin-register-field">
-                                <input type="text" {...register('name')} required placeholder=""/>
+                                <input type="text" {...register('name')} placeholder=""/>
                                 <label>Nombre</label>
                             </div>
+                            {errors.name && <div className='error-message'>{errors.name.message}</div>}
                             <div className="admin-register-field">
                                 <input type={
                                                 values.showPassword
                                                 ? "text"
                                                 : "password"
                                             } 
-                                            {...register('password')} required/>
+                                            {...register('password')}
+                                        placeholder=""
+                                />
                                 <label>Contraseña</label>
                             </div>
+                            {errors.password && <div className='error-message'>{errors.password.message}</div>}
                             <div className="admin-register-password-box">
                                 <div className="admin-register-field">
                                     <input type={
@@ -80,7 +84,8 @@ export const AdminRegisterPage = () => {
                                                 ? "text"
                                                 : "password"
                                             } 
-                                        {...register('password2')} required/>
+                                        {...register('confirmPassword')}
+                                        placeholder=""/>
                                     <label>Confirma la contraseña</label>
                                 </div>
                                 <FontAwesomeIcon className="admin-register-pass-visibility-button"
@@ -89,7 +94,7 @@ export const AdminRegisterPage = () => {
                                     icon={values.showPassword ? faEye : faEyeSlash}
                                 />
                             </div>
-                            {errors.password2 && <div className='admin-register-error-message'>{errors.password2.message}</div>}
+                            {errors.confirmPassword && <div className='admin-register-error-message'>{errors.confirmPassword.message}</div>}
                             <div className="admin-register-register-box">
                                 <input type="submit" value="Crear cuenta"/>
                             </div>
