@@ -21,7 +21,7 @@ export class PresentationController {
       return next(new BadRequestError({ message: "Email, title and content are required" }));
     }
     try {
-      const txtName = uniqueFileName(".txt");
+      const txtName = uniqueFileName(".md");
       const imageName = req.file?.filename;
       const email = req.payload?.email;
       if (!email) return next(new UnauthorizedError());
