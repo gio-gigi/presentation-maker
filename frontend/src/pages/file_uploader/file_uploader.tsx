@@ -14,6 +14,8 @@ export const FileUploader = () => {
         presentation,
         setIsErrorShow,
         isErrorShow,
+        isValid,
+        handleUpload,
     } = useUploadFile();
 
     return (
@@ -33,11 +35,17 @@ export const FileUploader = () => {
                             }/>
                     }
                     {
-                        presentation && presentation.slideJson.map((slide) => 
+                        presentation && presentation.slideJson.map((slide, index) => 
                             {
-                                return <SlideV2 slide={{content: slide.content}} />
+                                return <SlideV2 slide={{content: slide.content}} id={`slide-${index}`}/>
                             })
                     }
+                </div>
+                <div className='float-upload-button'>
+                    <button className="upload-button" onClick={handleUpload}
+                        disabled={!isValid}>
+                        Subir Presentacion
+                    </button>
                 </div>
             </div>
             <ToastContainer
