@@ -3,11 +3,13 @@ import { SlideV2Entity } from "../../infrastructure/entities/presentation_previe
 
 interface SlideV2Props {
   slide: SlideV2Entity;
+  id: string;
 }
 
-export const SlideV2 = ({ slide }: SlideV2Props) => {
+export const SlideV2 = ({ slide, id }: SlideV2Props) => {
   return (
     <div
+    id={id}
       style={{
         width: "60%",
         aspectRatio: 2 / 1,
