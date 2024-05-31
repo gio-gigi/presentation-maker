@@ -11,6 +11,7 @@ import { LoginRoute } from './login_route';
 import { AdminRegisterPage } from "../pages/admin_register/admin_register_page";
 import { PresentationMakerPageV2 } from '../pages/presentation_maker/presentation_maker_page_v2';
 import { FileUploader } from "../pages/file_uploader/file_uploader";
+import { PresentationVisualizationPagev2 } from '../pages/presentation_visualization/presentation_visualization_page_v2';
 
 export const router = createBrowserRouter([
     {
@@ -23,8 +24,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/presentation/:id",
-                element: <PresentationVisualizationPage/>,
-            }
+                element: <PresentationVisualizationPagev2/>,
+            }/* ,
+            {
+                path: "/presentation/md/:id",
+                element: <PresentationVisualizationPagev2/>,
+            } */
         ]
     },
     {
